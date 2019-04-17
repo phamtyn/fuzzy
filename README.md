@@ -15,7 +15,7 @@ In order to compile Fuzzy you need following software packages:
 - flex
 - bison
 
-Basic:
+Basic configuring and building:
 
 ./configure --prefix=/usr
 
