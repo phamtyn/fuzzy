@@ -1,0 +1,248 @@
+'\" t
+.TH FUZZY 1 "September 02 2018" "fuzzy-1.3.1" "Omarine User's Manual"
+.SH NAME
+.B fuzzy
+\- The implementation of the FUZZY programming language
+.SH SYNOPSIS
+.B  fuzzy
+.RI PROGRAM-FILE
+.PP
+.B  fuzzy
+.RI [options]
+.SH DESCRIPTION
+\fBFuzzy\fR is the implementation of the FUZZY programming language. Fuzzy is designed to process linguistic variables and fuzzy sets with vague concepts such as HIGH, LOW, MEDIUM, \fBVERY VERY\fR HIGH, \fBNOT VERY\fR LOW, \fBREALLY\fR GOOD. Fuzzy reads the FUZZY program source from the file PROGRAM-FILE.
+.SS  OPTIONS
+\ 
+.TP
+.B  -h \fR
+Display the help and exit.
+.SH TUTORIALS
+
+.TP
+.B Hello World program
+FUZZY programs have no main function. The source codes of a simplest program may like this
+.IP
+\fBprint\fR "Hello World"\fB;\fR
+
+.TP
+.B Basic types
+Basic types are \fBint\fR, \fBNumber\fR, \fBString\fR, \fBbool\fR and \fBfuzzy\fR. Most of them can be assigned to another, for instance
+.IP
+\fBint\fR i = 100\fB;\fR
+.br
+i += 50\fB;\fR
+.br
+\fBString\fR text = i\fB;\fR
+.br
+speed.high = i + 50\fB;\fR\fR // speed.high is a fuzzy set
+
+.TP
+.B  Control Statements
+Control Statements \fBwhile\fR, \fBfor\fR, \fBif\fR, \fBelse\fR, \fBbreak\fR, \fBcontinue\fR, \fBreturn\fR are similar to C/C++. Statement \fBswitch\fR can be used for \fBString\fR type
+.IP
+\fBswitch\fR(text)\fR // text is a String variable
+.br
+\fB{
+.IP
+\fBcase\fR "abc"\fB:\fR
+.RS 4
+.IP
+// do something
+.IP
+\fBbreak\fB;\fR
+.RE
+.IP
+\fBcase\fR "def"\fB:\fR
+.RS 4
+.IP
+// do something
+.IP
+\fBbreak\fB;\fR
+.RE
+.IP
+\fBdefault\fB:\fR
+.RS 4
+.IP
+// do something
+.IP
+\fBbreak\fB;\fR
+.RE
+.IP
+\fB}
+
+.TP
+.B Override functions
+Similar to C++, \fBFuzzy\fR can be used to override functions and operators. \fBoperator =\fR can be used with return type is \fBvoid\fR. Member variables can be initialized inside a \fBstruct\fR
+.IP
+\fBstruct\fR OBJECT
+.br
+\fB{
+.RS 11
+\fBint\fR m_i = 50\fB;\fR
+.br
+\fBString\fR m_string = "abc"\fB;\fR
+.br
+\fBNumber\fR m_array[10]\fB;\fR\fR // an array of Number
+.br
+\fBvoid operator = \fR(OBJECT t)
+.br
+\fB{\fR
+.RS 4
+m_i = t.m_i\fB;\fR
+.br
+m_string = t.m_string\fB;\fR
+.br
+\fBfor\fR(\fBint\fR i = 0\fB;\fR i < 10\fB;\fR i++)
+.RS 4
+m_array[i] = t.m_array[i]\fB;\fR
+.RE
+.RE
+\fB}\fR
+.br
+OBJECT \fBoperator - \fR()
+.br
+\fB{\fR
+.RS 4
+OBJECT obj\fB;\fR
+.br
+obj.m_i = -m_i\fB;\fR
+.br
+\fBreturn\fR obj\fB;\fR
+.RE
+\fB}
+.RE
+.IP
+\fB}\fB;\fR
+
+.TP
+.B fuzzy set and fuzzy term
+Discrete fuzzy sets must be declared inside a discrete fuzzy term. The following example shows a fuzzy term with three fuzzy sets. Each one has five elements, each element is a pair grade/value
+.IP
+\fBterm\fR TEMPERATURE(5)
+.br
+\fB{
+.RS 11
+\fBfuzzy discrete\fR low(1/100, 0.5/125, 0.25/150, 0.1/175, 0/200)\fB;\fR
+.br
+\fBfuzzy discrete\fR medium(0.25/100, 0.5/125, 1/150, 0.5/175, 0.25/200)\fB;\fR
+.br
+\fBfuzzy discrete\fR high(0/100, 0/125, 0.25/150, 0.75/175, 1/200)\fB;\fR
+.RS -4
+\fB}\fR\fB;\fR
+.RE
+.RE
+
+.TP
+.B Put data into a fuzzy term
+Keyword \fBput\fR be used to set values and membership values for fuzzy terms
+.IP
+TEMPERATURE temperature\fB;\fR
+.br
+\fBput\fR temperature \fB:=\fR (0/100, 0/125, 0.5/150, 0.25/175, 0/200)\fB;\fR
+
+.TP
+.B Apply fuzzy rules
+Operators \fBAND\fR, \fBOR\fR, \fBNOT\fR, \fBVERY\fR, \fBLITTLE\fR, \fBREALLY\fR can be used recursively
+.IP
+\fBrule\fR temperature.medium \fBAND\fR pressure.medium \fBOR\fR weather.bad \fBOR\fR traffic.bad \fB=>\fR speed.low\fB;\fR
+.br
+\fBrule\fR \fBVERY\fR temperature.high \fBAND\fR pressure.low \fBOR\fR \fBNOT\fR \fBVERY\fR temperature.high \fBAND\fR
+pressure.medium \fBAND\fR \fBNOT\fR \fBVERY\fR traffic.bad \fB=>\fR speed.high\fB;\fR
+.br
+\fBrule\fR temperature.low \fBAND\fR pressure.high \fBAND\fR \fBREALLY\fR weather.normal \fBOR\fR traffic.normal \fB=>\fR speed.medium\fB;\fR
+.br
+\fBrule\fR (temperature.medium \fBOR\fR pressure.low) \fBAND\fR weather.good \fBOR\fR pressure.low \fBAND\fR traffic.good \fB=>\fR speed.high\fB;\fR
+.br
+\fBrule\fR \fBREALLY\fR temperature.medium \fBAND\fR \fBLITTLE\fR pressure.high \fBAND\fR \fBVERY\fR \fBVERY\fR weather.good \fB=>\fR speed.high\fB;\fR
+
+.TP
+.B Print fuzzy sets and fuzzy terms
+The following statement prints defuzzification value of a fuzzy term
+.IP
+\fBprint\fR speed\fB;\fR
+.IP
+if want to print its fuzzy data, you can use statement \fBprints
+.IP
+\fBprints\fR speed\fB;\fR
+
+.TP
+.B Defuzzification
+Defuzzification method be used is centroid method
+.IP
+\fBDefuzz\fR(pressure)\fB;\fR
+
+.TP
+.B Reset fuzzy sets and fuzzy terms
+Built-in function \fBZeroFuzz\fR be used to reset all data of a fuzzy set or fuzzy term to zero
+.IP
+\fBZeroFuzz\fR(temperature)\fB;\fR
+
+.TP
+.B Transfer fuzzy data to array
+There is a built-in struct named \fBFuzzyPair\fR. To transfer fuzzy data to array, you declare an array of FuzzyPair whose size is sufficient to store data, then use function \fBFuzzyToArray\fR like this
+.IP
+\fBFuzzyPair\fR array[8]\fB;\fR
+.br
+\fBFuzzyToArray\fR(speed, array)\fB;\fR
+.IP
+The struct \fBFuzzyPair\fR has two members, they are \fBm_grade\fR and \fBm_value\fR
+.IP
+\fBfor\fR(\fBint\fR i = 0\fB;\fR i < 8\fB;\fR i++)
+.RS 11
+\fBprint\fR array[i].\fBm_grade\fR, " ", array[i].\fBm_value\fR\fB;\fR
+.RE
+
+.TP
+.B Continuous fuzzy
+This type of fuzzy be applied for fuzzy sets which have a declared domain and a center value. The membership function be used is Gaussian function
+.IP
+\fBterm\fR TEMPERATURE(100, 200)
+.br
+\fB{\fR
+.RS 11
+\fBfuzzy\fR low = 100\fB;\fR
+.br
+\fBfuzzy\fR medium = 150\fB;\fR
+.br
+\fBfuzzy\fR high = 200\fB;\fR
+.RS -4
+\fB}\fR\fB;\fR
+.RE
+.RE
+
+.TP
+.B Print to file
+Token \fB>\fR be used to redirect output to file for \fBprint\fR and \fBprints\fR
+.IP
+\fBprint\fR speed \fB>\fR "filename.txt"\fB;\fR
+.IP
+Token \fB>>\fR be used to redirect for \fBprint\fR and \fBprints\fR, append output to the file
+.IP
+\fBprints\fR speed \fB>>\fR "filename.txt"\fB;\fR
+
+.TP
+.B Execute a shell command
+Shell commands are executed with keyword \fBsystem\fR
+.IP
+\fBString\fR command_text = "sudo makeca -f"\fB;\fR
+.br
+\fBsystem\fR command_text\fB;\fR
+
+.TP
+.B Math functions
+Built-in functions of math are \fBsin\fR, \fBcos\fR, \fBtan\fR, \fBatan\fR, \fBln\fR, \fBlog10\fR, \fBexp\fR, \fBpow\fR, \fBsqrt\fR, \fBfloor\fR, \fBround\fR, \fBabs\fR, \fBmin\fR, and \fBmax\fR
+
+.TP
+.B Include file
+Including file is similar to C/C++
+.IP
+\fB#include\fR "filename.h"
+
+.TP
+.B Comment
+Comment is similar to C/C++, used with token \fB//\fR or pair \fB/*\fR and \fB*/\fR
+
+.SH AUTHOR
+Written by Pham Thanh Tuyen <phamtyn@gmail.com>
+.SH SEE ALSO
+Full documentation at: <https://omarine.org/fuzzy>
