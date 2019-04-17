@@ -19,6 +19,7 @@ Basic:
 
    ./configure --prefix=/usr
    make
-   sudo make install
+   Now as the root user:
+   make install
    
 See the file INSTALL for additional options.
