@@ -17,7 +17,7 @@ In order to compile Fuzzy you need following software packages:
 
 Basic configuring and building:
 
-./configure --prefix=/usr
+sh configure --prefix=/usr
 
 make
 
