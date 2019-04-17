@@ -4,22 +4,25 @@ Fuzzy is the implementation of the FUZZY programming language. Fuzzy is designed
 Full documentation at: <https://omarine.org/fuzzy>.
 
 Version: 1.3.1
-Copyright (C) 2016-2018 Omarine.
+
 Homepage: https://omarine.org
 
 Configuring and Building Fuzzy
 ==============================
 
 In order to compile Fuzzy you need following software packages:
-	- GCC compiler
-	- flex
-	- bison
+- GCC compiler
+- flex
+- bison
 
 Basic:
 
-   ./configure --prefix=/usr
-   make
-   Now as the root user:
-   make install
+./configure --prefix=/usr
+
+make
+
+Now as the root user:
+
+make install
    
 See the file INSTALL for additional options.
