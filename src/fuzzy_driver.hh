@@ -253,6 +253,8 @@ public:
   
   FUZZY *eval_fuzzy_rule(NODE *tree, FUZZY *dest, STRUCT *parentStruct);
   
+  void set_reading(const string &arg);
+  
 };
 
 inline bool fuzzy_driver::CheckFuzzyObject_discrete(Object *pObject, 

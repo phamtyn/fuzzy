@@ -248,7 +248,11 @@ DOUBLE   	[0-9]+"."[0-9]*
 "fuzzy"     	YYLVAL->sval = yytext; return yy::fuzzy_parser::token::TOK_FUZZY_KEY;
 "int"     	YYLVAL->sval = yytext; return yy::fuzzy_parser::token::TOK_INT_KEY;
 "operator"     	YYLVAL->sval = yytext; return yy::fuzzy_parser::token::TOK_OPERATOR;
-"system"     	return yy::fuzzy_parser::token::TOK_SYSTEM;
+            /* "system"     	return yy::fuzzy_parser::token::TOK_SYSTEM; */
+"system"    {
+  driver->error (*YYLLOC, "Online version does not support the keyword `system'");
+  exit(EXIT_FAILURE);
+}
 "rule"     	return yy::fuzzy_parser::token::TOK_RULE;
 "=>"     	return yy::fuzzy_parser::token::TOK_DEDUCE;
 "discrete"     	return yy::fuzzy_parser::token::TOK_DISCRETE;

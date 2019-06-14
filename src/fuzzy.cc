@@ -29,11 +29,15 @@ main (int argc, char *argv[])
 {
 	int res = 0, opt;
 	fuzzy_driver driver;
+    string reading_string;
 	
-	while ((opt = getopt(argc, argv, "h")) != EOF)
+	while ((opt = getopt(argc, argv, "r:h")) != EOF)
 		switch (opt)
 		{
-			case 'h':
+			case 'r':
+				reading_string = optarg;
+				break;
+            case 'h':
 				usage(0);
 				break;
 			default:
@@ -43,6 +47,7 @@ main (int argc, char *argv[])
 
 	if (argc - optind == 1)
 	{
+        driver.set_reading(reading_string);
 		if (!driver.parse (argv[optind]))
 			driver.interpret(driver.root);
 		else res = 1;

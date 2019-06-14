@@ -49,6 +49,45 @@ fuzzy_driver::fuzzy_driver ()
 	FuzzyPair->Add_var(m_value, "m_value");
 	
 	FuzzyPair->SetCompleted();
+    
+}
+
+void fuzzy_driver::set_reading(const string &arg) {
+
+    if (! arg.length())
+        return;
+    
+    FuzList <string> list;
+    
+    char *reading = new char[arg.length() + 1];
+    char *p = reading;
+    strcpy(reading, arg.data());
+    
+    while (reading != NULL) {
+        char *word = strsep (&reading, " ");
+        if (strlen(word) == 0)
+            continue;
+        list.AddTail(word);
+    }
+    
+    delete p;
+    
+    int count = list.GetCount();
+    Object *system_reading_count = new INTERGER(count);
+    STRUCT::root->Add_var(system_reading_count, "system_reading_count");
+    
+    ARRAY *system_reading_array = new ARRAY(Type_string, count);
+    
+    int i = 0;
+    POSITION pos = list.GetHeadPosition();
+    while(pos)
+    {
+        const string &item = list.GetNext(pos);
+        *system_reading_array->GetArrayElement(i) = String(item);
+        i++;
+    }
+    
+    STRUCT::root->Add_var(system_reading_array, "system_reading_array");
 }
 
 fuzzy_driver::~fuzzy_driver ()
@@ -61,13 +100,13 @@ fuzzy_driver::~fuzzy_driver ()
 int
 fuzzy_driver::parse (const std::string &f)
 {
-  file = f;
-  scan_begin ();
-  yy::fuzzy_parser parser (this);
-  parser.set_debug_level (trace_parsing);
-  int res = parser.parse ();
-  scan_end ();
-  return res;
+    file = f;
+    scan_begin ();
+    yy::fuzzy_parser parser (this);
+    parser.set_debug_level (trace_parsing);
+    int res = parser.parse ();
+    scan_end ();
+    return res;
 }
 
 void

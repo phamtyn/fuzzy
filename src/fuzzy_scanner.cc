@@ -774,11 +774,11 @@ static const flex_int16_t yy_rule_linenum[103] =
       193,  197,  201,  205,  209,  213,  216,  219,  223,  228,
       229,  230,  231,  232,  233,  234,  235,  236,  237,  238,
       239,  240,  241,  242,  243,  244,  245,  246,  247,  248,
-      249,  250,  251,  252,  253,  254,  255,  256,  257,  258,
-      259,  260,  261,  262,  263,  265,  279,  285,  301,  313,
-      321,  337,  345,  346,  347,  348,  349,  351,  352,  354,
+      249,  250,  251,  253,  257,  258,  259,  260,  261,  262,
+      263,  264,  265,  266,  267,  269,  283,  289,  305,  317,
+      325,  341,  349,  350,  351,  352,  353,  355,  356,  358,
 
-      362,  368
+      366,  372
     } ;
 
 /* The intent behind this definition is that it'll catch
@@ -1672,69 +1672,73 @@ YY_RULE_SETUP
 #line 251 "fuzzy_scanner.ll"
 YYLVAL->sval = yytext; return yy::fuzzy_parser::token::TOK_OPERATOR;
 	YY_BREAK
+/* "system"     	return yy::fuzzy_parser::token::TOK_SYSTEM; */
 case 74:
 YY_RULE_SETUP
-#line 252 "fuzzy_scanner.ll"
-return yy::fuzzy_parser::token::TOK_SYSTEM;
+#line 253 "fuzzy_scanner.ll"
+{
+  driver->error (*YYLLOC, "Online version does not support the keyword `system'");
+  exit(EXIT_FAILURE);
+}
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-#line 253 "fuzzy_scanner.ll"
+#line 257 "fuzzy_scanner.ll"
 return yy::fuzzy_parser::token::TOK_RULE;
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
-#line 254 "fuzzy_scanner.ll"
+#line 258 "fuzzy_scanner.ll"
 return yy::fuzzy_parser::token::TOK_DEDUCE;
 	YY_BREAK
 case 77:
 YY_RULE_SETUP
-#line 255 "fuzzy_scanner.ll"
+#line 259 "fuzzy_scanner.ll"
 return yy::fuzzy_parser::token::TOK_DISCRETE;
 	YY_BREAK
 case 78:
 YY_RULE_SETUP
-#line 256 "fuzzy_scanner.ll"
+#line 260 "fuzzy_scanner.ll"
 return yy::fuzzy_parser::token::TOK_PUT;
 	YY_BREAK
 case 79:
 YY_RULE_SETUP
-#line 257 "fuzzy_scanner.ll"
+#line 261 "fuzzy_scanner.ll"
 return yy::fuzzy_parser::token::TOK_ASSIGN_FUZ;
 	YY_BREAK
 case 80:
 YY_RULE_SETUP
-#line 258 "fuzzy_scanner.ll"
+#line 262 "fuzzy_scanner.ll"
 return yy::fuzzy_parser::token::TOK_VERY;
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-#line 259 "fuzzy_scanner.ll"
+#line 263 "fuzzy_scanner.ll"
 return yy::fuzzy_parser::token::TOK_LITTLE;
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-#line 260 "fuzzy_scanner.ll"
+#line 264 "fuzzy_scanner.ll"
 return yy::fuzzy_parser::token::TOK_REALLY;
 	YY_BREAK
 case 83:
 YY_RULE_SETUP
-#line 261 "fuzzy_scanner.ll"
+#line 265 "fuzzy_scanner.ll"
 return yy::fuzzy_parser::token::TOK_AND_FUZ;
 	YY_BREAK
 case 84:
 YY_RULE_SETUP
-#line 262 "fuzzy_scanner.ll"
+#line 266 "fuzzy_scanner.ll"
 return yy::fuzzy_parser::token::TOK_OR_FUZ;
 	YY_BREAK
 case 85:
 YY_RULE_SETUP
-#line 263 "fuzzy_scanner.ll"
+#line 267 "fuzzy_scanner.ll"
 return yy::fuzzy_parser::token::TOK_NOT_FUZ;
 	YY_BREAK
 case 86:
 YY_RULE_SETUP
-#line 265 "fuzzy_scanner.ll"
+#line 269 "fuzzy_scanner.ll"
 {
   errno = 0;
   double val = strtod (yytext, NULL);
@@ -1751,7 +1755,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 87:
 YY_RULE_SETUP
-#line 279 "fuzzy_scanner.ll"
+#line 283 "fuzzy_scanner.ll"
 {
   long val = atol (yytext);
   YYLVAL->lval=val;
@@ -1760,7 +1764,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 88:
 YY_RULE_SETUP
-#line 285 "fuzzy_scanner.ll"
+#line 289 "fuzzy_scanner.ll"
 {  
   char *p = yy_c_buf_p + 1;
   int i = 0;
@@ -1779,7 +1783,7 @@ YY_RULE_SETUP
 
 case 89:
 YY_RULE_SETUP
-#line 301 "fuzzy_scanner.ll"
+#line 305 "fuzzy_scanner.ll"
 { 
 	/* saw closing quote - all done */
 	BEGIN(INITIAL);
@@ -1795,7 +1799,7 @@ YY_RULE_SETUP
 case 90:
 /* rule 90 can match eol */
 YY_RULE_SETUP
-#line 313 "fuzzy_scanner.ll"
+#line 317 "fuzzy_scanner.ll"
 {
 	driver->error (*YYLLOC, "unterminated string constant");
 	exit(EXIT_FAILURE);
@@ -1806,7 +1810,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 91:
 YY_RULE_SETUP
-#line 321 "fuzzy_scanner.ll"
+#line 325 "fuzzy_scanner.ll"
 {
 	/* octal escape sequence */
 	int result;
@@ -1825,7 +1829,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 92:
 YY_RULE_SETUP
-#line 337 "fuzzy_scanner.ll"
+#line 341 "fuzzy_scanner.ll"
 {
 	/* generate error - bad escape sequence; something
 	* like '\48' or '\0777777'
@@ -1836,43 +1840,43 @@ YY_RULE_SETUP
 	YY_BREAK
 case 93:
 YY_RULE_SETUP
-#line 345 "fuzzy_scanner.ll"
+#line 349 "fuzzy_scanner.ll"
 *string_buf_ptr++ = '\n';
 	YY_BREAK
 case 94:
 YY_RULE_SETUP
-#line 346 "fuzzy_scanner.ll"
+#line 350 "fuzzy_scanner.ll"
 *string_buf_ptr++ = '\t';
 	YY_BREAK
 case 95:
 YY_RULE_SETUP
-#line 347 "fuzzy_scanner.ll"
+#line 351 "fuzzy_scanner.ll"
 *string_buf_ptr++ = '\r';
 	YY_BREAK
 case 96:
 YY_RULE_SETUP
-#line 348 "fuzzy_scanner.ll"
+#line 352 "fuzzy_scanner.ll"
 *string_buf_ptr++ = '\b';
 	YY_BREAK
 case 97:
 YY_RULE_SETUP
-#line 349 "fuzzy_scanner.ll"
+#line 353 "fuzzy_scanner.ll"
 *string_buf_ptr++ = '\f';
 	YY_BREAK
 case 98:
 YY_RULE_SETUP
-#line 351 "fuzzy_scanner.ll"
+#line 355 "fuzzy_scanner.ll"
 *string_buf_ptr++ = yytext[1];
 	YY_BREAK
 case 99:
 /* rule 99 can match eol */
 YY_RULE_SETUP
-#line 352 "fuzzy_scanner.ll"
+#line 356 "fuzzy_scanner.ll"
 YYLLOC->lines (1); YYLLOC->step ();
 	YY_BREAK
 case 100:
 YY_RULE_SETUP
-#line 354 "fuzzy_scanner.ll"
+#line 358 "fuzzy_scanner.ll"
 {
 	char *yptr = yytext;
 
@@ -1883,7 +1887,7 @@ YY_RULE_SETUP
 
 case 101:
 YY_RULE_SETUP
-#line 362 "fuzzy_scanner.ll"
+#line 366 "fuzzy_scanner.ll"
 {
   
 	YYLVAL->sval = yytext;
@@ -1892,7 +1896,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 102:
 YY_RULE_SETUP
-#line 368 "fuzzy_scanner.ll"
+#line 372 "fuzzy_scanner.ll"
 driver->error (*YYLLOC, "invalid character");
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
@@ -1900,7 +1904,7 @@ case YY_STATE_EOF(quote):
 case YY_STATE_EOF(comment):
 case YY_STATE_EOF(commentcc):
 case YY_STATE_EOF(incl):
-#line 370 "fuzzy_scanner.ll"
+#line 374 "fuzzy_scanner.ll"
 {
 	if ( driver->list.IsEmpty() )
 	    return yy::fuzzy_parser::token::TOK_END;
@@ -1910,10 +1914,10 @@ case YY_STATE_EOF(incl):
 	YY_BREAK
 case 103:
 YY_RULE_SETUP
-#line 376 "fuzzy_scanner.ll"
+#line 380 "fuzzy_scanner.ll"
 ECHO;
 	YY_BREAK
-#line 1916 "fuzzy_scanner.cc"
+#line 1920 "fuzzy_scanner.cc"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -3018,7 +3022,7 @@ void yyfree (void * ptr )
 
 /* %ok-for-header */
 
-#line 376 "fuzzy_scanner.ll"
+#line 380 "fuzzy_scanner.ll"
 
 
 void
