@@ -1,4 +1,4 @@
-AC_INIT([fuzzy], [1.3.1], [phamtyn@gmail.com])
+AC_INIT([fuzzy], [1.4], [phamtyn@gmail.com])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 AC_PROG_CXX
 AM_PROG_LEX
