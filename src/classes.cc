@@ -1666,8 +1666,9 @@ void usage(int code)
 	cout << endl;
 	cout << VERSION << endl << endl;
 	string msg = "Usage: fuzzy program-file\n";
-	      msg += "       fuzzy -h\n\n";
-	msg += "Written September, 2018 by Pham Thanh Tuyen\n";
+	      msg += "       fuzzy -h\n";
+          msg += "       fuzzy -r \"val1 val2 ...\" program-file\n\n";
+	msg += "Written June, 2019 by Pham Thanh Tuyen\n";
 	cout << msg;
 	exit(code);
 }
