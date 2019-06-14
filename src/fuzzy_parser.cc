@@ -1055,7 +1055,7 @@ namespace yy {
 
   case 12:
 #line 223 "fuzzy_parser.yy" // lalr1.cc:907
-    { (yylhs.value.Node_ptr) = node (node ((yystack_[2].value.Node_ptr), yystack_[2].location), Node_K_exit, (NODE *)NULL, yylhs.location); }
+    { (yylhs.value.Node_ptr) = node ((yystack_[2].value.Node_ptr), Node_K_exit, (NODE *)NULL, yylhs.location); }
 #line 1060 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 

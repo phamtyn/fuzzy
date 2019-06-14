@@ -220,7 +220,7 @@ statement
 	| CONTINUE SEMI
 		{ $$ = node ((NODE *)NULL, Node_K_continue, (NODE *)NULL, @$); }	
 	| EXIT "(" exp ")" SEMI
-		{ $$ = node (node ($3, @3), Node_K_exit, (NODE *)NULL, @$); }	
+		{ $$ = node ($3, Node_K_exit, (NODE *)NULL, @$); }	
 	| action	{ $$ = $1; }	
   //	| error	{ $$ = NULL; yyerrok;}	
 	| declare 	

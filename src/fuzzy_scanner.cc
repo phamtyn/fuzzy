@@ -774,7 +774,7 @@ static const flex_int16_t yy_rule_linenum[103] =
       193,  197,  201,  205,  209,  213,  216,  219,  223,  228,
       229,  230,  231,  232,  233,  234,  235,  236,  237,  238,
       239,  240,  241,  242,  243,  244,  245,  246,  247,  248,
-      249,  250,  251,  253,  257,  258,  259,  260,  261,  262,
+      249,  250,  251,  252,  257,  258,  259,  260,  261,  262,
       263,  264,  265,  266,  267,  269,  283,  289,  305,  317,
       325,  341,  349,  350,  351,  352,  353,  355,  356,  358,
 
@@ -1672,15 +1672,15 @@ YY_RULE_SETUP
 #line 251 "fuzzy_scanner.ll"
 YYLVAL->sval = yytext; return yy::fuzzy_parser::token::TOK_OPERATOR;
 	YY_BREAK
-/* "system"     	return yy::fuzzy_parser::token::TOK_SYSTEM; */
 case 74:
 YY_RULE_SETUP
-#line 253 "fuzzy_scanner.ll"
-{
+#line 252 "fuzzy_scanner.ll"
+return yy::fuzzy_parser::token::TOK_SYSTEM;
+	YY_BREAK
+/* "system"    {
   driver->error (*YYLLOC, "Online version does not support the keyword `system'");
   exit(EXIT_FAILURE);
-}
-	YY_BREAK
+} */
 case 75:
 YY_RULE_SETUP
 #line 257 "fuzzy_scanner.ll"

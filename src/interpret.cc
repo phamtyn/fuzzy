@@ -898,8 +898,20 @@ int fuzzy_driver::interpret (NODE *tree, STRUCT *parentStruct)
 	
 	case Node_K_exit:
 	{
-		long exit_code = tree->left->data->GetInterger();
-		exit(exit_code);
+        long exit_code;
+        NODE *eval = tree_eval(tree->left, parentStruct);
+        switch (eval->data->GetType()) {
+            case Type_interger:
+                exit_code = eval->data->GetInterger();
+                break;
+            case Type_number:
+                exit_code = (long)eval->data->GetNumber();
+                break;
+            default:
+                error(tree->loc, "Exit code must be a number");
+                exit(EXIT_FAILURE);
+        }
+        exit(exit_code);
 	}
 	
 	case Node_K_print:
