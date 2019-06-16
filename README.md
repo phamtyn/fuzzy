@@ -26,7 +26,7 @@ make install
 
 Please see the INSTALL file for additional options.
 
-**Tip:** If you want bring the fuzzy binary to run as portable such as running on a virtual machine on a cloud, remove debugging symbols then gzip it:
+**Tip:** Remove debugging symbols from the fuzzy binary then gzip it to get it running as portable such as running on a virtual machine on a cloud::
 ```sh
 strip -d fuzzy
 gzip fuzzy
