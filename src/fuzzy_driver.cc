@@ -141,6 +141,8 @@ fuzzy_driver::init_functions()
   functions2["max"] = NODE(max, yy::location());
   
   functions_buildin2["FuzzyToArray"] = FuzzyToArray;
+  functions_buildin2["PutReading"] = PutReading;
+  functions_buildin5["PutReading"] = PutReading;
   
   functions_buildin1["Defuzz"] = Defuzz;
   functions_buildin1["ZeroFuzz"] = ZeroFuzz;
@@ -564,7 +566,25 @@ Object *fuzzy_driver::do_namespace(NODE *tree, STRUCT *parentStruct)
 				return pObject_buildin;
 			
 			FUNC_PAIR2 *p2 = functions_buildin2.Lookup(name);
-			if(p2)
+            FUNC_PAIR5 *p5 = functions_buildin5.Lookup(name);
+            if ( p2 && p5 ) {
+                if(ParamNodeArray.GetCount() == 2)
+					return p2->m_value(ParamNodeArray[0]->data,
+						ParamNodeArray[1]->data, tree->loc);
+                else if(ParamNodeArray.GetCount() == 5)
+					return p5->m_value(ParamNodeArray[0]->data,
+                        ParamNodeArray[1]->data,
+                        ParamNodeArray[2]->data,
+                        ParamNodeArray[3]->data,
+						ParamNodeArray[4]->data, tree->loc);
+				else if( !pObject )	
+				{
+					string msg = "must be 2 or 5 arguments for this named function";
+					error(tree->loc, msg.data());
+					exit(EXIT_FAILURE);
+				}
+            }
+			else if(p2)
 			{
 				if(ParamNodeArray.GetCount() == 2)
 					return p2->m_value(ParamNodeArray[0]->data,
@@ -576,6 +596,27 @@ Object *fuzzy_driver::do_namespace(NODE *tree, STRUCT *parentStruct)
 					exit(EXIT_FAILURE);
 				}
 				else if(ParamNodeArray.GetCount() < 2 && !pObject)
+				{
+					string msg = "too few arguments to this function";
+					error(tree->loc, msg.data());
+					exit(EXIT_FAILURE);
+				}
+			}
+			else if(p5)
+			{
+				if(ParamNodeArray.GetCount() == 5)
+					return p5->m_value(ParamNodeArray[0]->data,
+                        ParamNodeArray[1]->data,
+                        ParamNodeArray[2]->data,
+                        ParamNodeArray[3]->data,
+						ParamNodeArray[4]->data, tree->loc);
+				else if(ParamNodeArray.GetCount() > 5 && !pObject)	
+				{
+					string msg = "too many arguments to this function";
+					error(tree->loc, msg.data());
+					exit(EXIT_FAILURE);
+				}
+				else if(ParamNodeArray.GetCount() < 5 && !pObject)
 				{
 					string msg = "too few arguments to this function";
 					error(tree->loc, msg.data());

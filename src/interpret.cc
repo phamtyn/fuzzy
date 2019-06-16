@@ -94,6 +94,12 @@ int fuzzy_driver::interpret (NODE *tree, STRUCT *parentStruct)
 		string &name = tree->left->left->data->GetString();
 		long size = tree->left->right->data->GetInterger();
 		
+        if(size < 2)
+		{
+			string text = "The size of a fuzzy term must be 2 or more";
+			error(tree->left->left->loc, text);
+			exit(EXIT_FAILURE);
+		}
 		if(!parentStruct->CheckName_type_decl(name))
 		{
 			string text = "redefinition of struct `";
@@ -106,6 +112,9 @@ int fuzzy_driver::interpret (NODE *tree, STRUCT *parentStruct)
 		parentStruct->Add_type(thisType, name);
 		
 		thisType->SetFuzzy(size);
+        
+        Object *fuzzy_size = new INTERGER(size);
+        thisType->Add_var(fuzzy_size, "size");
 		
 		for (t = tree->right; t != NULL; t = t->right) {
 			(void)interpret (t->left, thisType);

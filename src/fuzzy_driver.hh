@@ -181,6 +181,7 @@ public:
   FuzMap<string, NODE> functions2;
   FuzMap<string, FNCT_BUILDIN2> functions_buildin2;
   FuzMap<string, FNCT_BUILDIN1> functions_buildin1;
+  FuzMap<string, FNCT_BUILDIN5> functions_buildin5;
   
   NODE *root;
   FuzList<include_data> list;

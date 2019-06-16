@@ -24,7 +24,7 @@
 
 //# define _DEBUG
 
-# define VERSION "Fuzzy 1.4.1"
+# define VERSION "Fuzzy 1.5.1"
 # define error_prefix 		"Fuzzy: "
 # define BASETYPE_ID_LIMIT 	100
 # define CLASS_ID_FUZZY_PAIR 	BASETYPE_ID_LIMIT
@@ -207,6 +207,7 @@ typedef double (*FNCT1) (double);
 typedef double (*FNCT2) (double, double);
 typedef Object * (*FNCT_BUILDIN2) (Object *, Object *, const yy::location &);
 typedef Object * (*FNCT_BUILDIN1) (Object *, const yy::location &);
+typedef Object * (*FNCT_BUILDIN5) (Object *, Object *, Object *, Object *, Object *, const yy::location &);
 
 using std::string;
 using std::cout;
@@ -217,6 +218,8 @@ double max(double a, double b);
 Object * FuzzyToArray (Object *, Object *, const yy::location &);
 Object * Defuzz (Object *, const yy::location &);
 Object * ZeroFuzz (Object *, const yy::location &);
+Object * PutReading (Object *, Object *, const yy::location &);
+Object * PutReading (Object *, Object *, Object *, Object *, Object *, const yy::location &);
 
 typedef FuzMap< string, STRUCT * > TYPE_MAP;
 typedef FuzMultiMap< string, Object * > VAR_MAP;
@@ -225,6 +228,7 @@ typedef FuzArray< Object * > OBJECT_ARRAY;
 
 typedef FuzMap< string, FNCT_BUILDIN2 >::FuzPair FUNC_PAIR2;
 typedef FuzMap< string, FNCT_BUILDIN1 >::FuzPair FUNC_PAIR1;
+typedef FuzMap< string, FNCT_BUILDIN5 >::FuzPair FUNC_PAIR5;
 
 class Object {
 
@@ -344,6 +348,13 @@ public:
 		return *this;
 	}
 	
+	Number &operator=(const Number &t) {
+		if (this == &t)
+			return *this;
+		m_number = t.m_number;
+		return *this;
+	}
+	
 	double &GetNumber() { return m_number; }
 	
 	friend std::ostream & operator<<(std::ostream &os, const Number &t);
@@ -398,6 +409,13 @@ public:
 		return *this;
 	}
 	
+	INTERGER &operator=(const INTERGER &t) {
+		if (this == &t)
+			return *this;
+		m_interger = t.m_interger;
+		return *this;
+	}
+	
 	long &GetInterger() { return m_interger; }
 	
 	friend std::ostream & operator<<(std::ostream &os, const INTERGER &t);
@@ -442,6 +460,13 @@ public:
 			return *this;
 		const String *pt = static_cast<const String *>(&t);
 		m_string = pt->m_string;
+		return *this;
+	}
+	
+	String &operator=(const String &t) {
+		if (this == &t)
+			return *this;
+		m_string = t.m_string;
 		return *this;
 	}
 	
@@ -582,6 +607,13 @@ public:
 			return *this;
 		const TBOOL *pt = static_cast<const TBOOL *>(&t);
 		m_flag = pt->m_flag;
+		return *this;
+	}
+	
+	TBOOL &operator=(const TBOOL &t) {
+		if (this == &t)
+			return *this;
+		m_flag = t.m_flag;
 		return *this;
 	}
 	

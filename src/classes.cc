@@ -1604,8 +1604,7 @@ Object * FuzzyToArray (Object *fuzzy, Object *array, const yy::location &loc)
 		exit(EXIT_FAILURE);
 	if(array->GetClassId() != CLASS_ID_FUZZY_PAIR || !(array->GetType() & Type_array))
 	{
-		string msg = "no match type, second argument must be an array of FuzzyPair, other than `";
-		msg += array->GetType() + "'";
+		string msg = "no match type, second argument must be an array of FuzzyPair";
 		NODE::driver->error(loc, msg);
 		exit(EXIT_FAILURE);
 	}
@@ -1659,6 +1658,264 @@ Object * ZeroFuzz (Object *fuzzy, const yy::location &loc)
 	fuzzy->ZeroBelong();
 	
 	return fuzzy;
+}
+
+Object * PutReading (Object *fuzzy, Object *val, const yy::location &loc)
+{
+	if(!NODE::driver->CheckFuzzyObject_discrete(fuzzy, loc, "PutReading function"))
+		exit(EXIT_FAILURE);
+	if( !(val->GetType() == Type_number || val->GetType() == Type_interger) )
+	{
+		string msg = "no match type, second argument must be a number";
+		NODE::driver->error(loc, msg);
+		exit(EXIT_FAILURE);
+	}
+	
+	Object *fuzzy_set;
+		
+	if(fuzzy->GetType() == Type_fuzzy)
+		fuzzy_set = fuzzy;
+	else
+		fuzzy_set = fuzzy->GetFuzzy();
+    
+    bool bFuzzyInited = false;
+    for (int i = 0; i < fuzzy_set->GetSize(); i++)
+        if (fuzzy_set->GetBelong()[i].m_value != 0) {
+            bFuzzyInited = true;
+            break;
+        }
+    if( !bFuzzyInited ) {
+        if( fuzzy->GetType() == Type_fuzzy ) {
+            string msg = "Fuzzy set has not been initialized";
+            NODE::driver->error(loc, msg);
+            exit(EXIT_FAILURE);
+        }
+        
+        bool bHasFuzzyVar = false;
+        POSITION pos = fuzzy->GetVarMap()->GetHeadPosition();
+        while(pos)
+        {
+            const TPair *p = fuzzy->GetVarMap()->GetNext(pos);
+            if (p->m_value->GetType() == Type_fuzzy) {
+                bHasFuzzyVar = true;
+                *fuzzy_set = *p->m_value;
+                break;
+            }
+            
+        }
+        if ( !bHasFuzzyVar ) {
+            string msg = "Fuzzy set has not been initialized";
+            NODE::driver->error(loc, msg);
+            exit(EXIT_FAILURE);
+        }
+    }
+    bFuzzyInited = false;
+    for (int i = 0; i < fuzzy_set->GetSize(); i++)
+        if (fuzzy_set->GetBelong()[i].m_value != 0) {
+            bFuzzyInited = true;
+            break;
+        }
+    if( !bFuzzyInited ) {
+        string msg = "Fuzzy set has not been initialized";
+        NODE::driver->error(loc, msg);
+        exit(EXIT_FAILURE);
+    }
+
+    for (int i = 0; i < fuzzy_set->GetSize(); i++)
+        fuzzy_set->GetBelong()[i].m_grade = 0;
+    
+    double min_diff = 1.7e+308;
+    double input;
+    if (val->GetType() == Type_number)
+        input = val->GetNumber();
+    else
+        input = val->GetInterger();
+    
+    int index_match;
+    for (int i = 0; i < fuzzy_set->GetSize(); i++) {
+        double diff = abs(fuzzy_set->GetBelong()[i].m_value - input);
+        if ( diff < min_diff ) {
+            min_diff = diff;
+            index_match = i;
+        }
+    }
+    
+    input = fuzzy_set->GetBelong()[index_match].m_value;
+    
+    if (index_match == 0) {
+        fuzzy_set->GetBelong()[0].m_grade = 1;
+        fuzzy_set->GetBelong()[1].m_grade = 0.5;
+    } 
+    else if (index_match == fuzzy_set->GetSize() - 1) {
+        fuzzy_set->GetBelong()[fuzzy_set->GetSize() - 1].m_grade = 1;
+        fuzzy_set->GetBelong()[fuzzy_set->GetSize() - 2].m_grade = 0.5;
+    }
+    else {
+        fuzzy_set->GetBelong()[index_match].m_grade = 1;
+        fuzzy_set->GetBelong()[index_match - 1].m_grade = 0.5;
+        fuzzy_set->GetBelong()[index_match + 1].m_grade = 0.5;
+    }
+    
+    if (val->GetType() == Type_number)
+        val->GetNumber() = input;
+    else
+        val->GetInterger() = input;
+    
+	return val;
+}
+
+Object * PutReading (Object *fuzzy, Object *val, Object *grade, Object *rate, Object *bClear, const yy::location &loc)
+{
+	if(!NODE::driver->CheckFuzzyObject_discrete(fuzzy, loc, "PutReading function"))
+		exit(EXIT_FAILURE);
+	if( !(val->GetType() == Type_number || val->GetType() == Type_interger) )
+	{
+		string msg = "no match type, second argument must be a number";
+		NODE::driver->error(loc, msg);
+		exit(EXIT_FAILURE);
+	}
+	if( !(grade->GetType() == Type_number || grade->GetType() == Type_interger) )
+	{
+		string msg = "no match type, third argument must be a number";
+		NODE::driver->error(loc, msg);
+		exit(EXIT_FAILURE);
+	}
+	if( !(rate->GetType() == Type_number || rate->GetType() == Type_interger) )
+	{
+		string msg = "no match type, fourth argument must be a number";
+		NODE::driver->error(loc, msg);
+		exit(EXIT_FAILURE);
+	}
+	if( !(bClear->GetType() == Type_bool || bClear->GetType() == Type_interger) )
+	{
+		string msg = "no match type, fifth argument must be a boolean value";
+		NODE::driver->error(loc, msg);
+		exit(EXIT_FAILURE);
+	}
+	
+	double grade_val;
+    if (grade->GetType() == Type_number)
+        grade_val = grade->GetNumber();
+    else
+        grade_val = grade->GetInterger();
+    if( grade_val > 1 || grade_val < 0 )
+	{
+		string msg = "the grade argument must be in the range from 0 to 1";
+		NODE::driver->error(loc, msg);
+		exit(EXIT_FAILURE);
+	}
+	
+	double rate_val;
+    if (rate->GetType() == Type_number)
+        rate_val = rate->GetNumber();
+    else
+        rate_val = rate->GetInterger();
+    if( rate_val > 1 || rate_val < 0 )
+	{
+		string msg = "the rate argument must be in the range from 0 to 1";
+		NODE::driver->error(loc, msg);
+		exit(EXIT_FAILURE);
+	}
+	
+	int bClear_val;
+    if (bClear->GetType() == Type_bool)
+        bClear_val = bClear->GetFlag();
+    else
+        bClear_val = bClear->GetInterger();
+	
+	
+	Object *fuzzy_set;
+		
+	if(fuzzy->GetType() == Type_fuzzy)
+		fuzzy_set = fuzzy;
+	else
+		fuzzy_set = fuzzy->GetFuzzy();
+    
+    bool bFuzzyInited = false;
+    for (int i = 0; i < fuzzy_set->GetSize(); i++)
+        if (fuzzy_set->GetBelong()[i].m_value != 0) {
+            bFuzzyInited = true;
+            break;
+        }
+    if( !bFuzzyInited ) {
+        if( fuzzy->GetType() == Type_fuzzy ) {
+            string msg = "Fuzzy set has not been initialized";
+            NODE::driver->error(loc, msg);
+            exit(EXIT_FAILURE);
+        }
+        
+        bool bHasFuzzyVar = false;
+        POSITION pos = fuzzy->GetVarMap()->GetHeadPosition();
+        while(pos)
+        {
+            const TPair *p = fuzzy->GetVarMap()->GetNext(pos);
+            if (p->m_value->GetType() == Type_fuzzy) {
+                bHasFuzzyVar = true;
+                *fuzzy_set = *p->m_value;
+                break;
+            }
+            
+        }
+        if ( !bHasFuzzyVar ) {
+            string msg = "Fuzzy set has not been initialized";
+            NODE::driver->error(loc, msg);
+            exit(EXIT_FAILURE);
+        }
+    }
+    bFuzzyInited = false;
+    for (int i = 0; i < fuzzy_set->GetSize(); i++)
+        if (fuzzy_set->GetBelong()[i].m_value != 0) {
+            bFuzzyInited = true;
+            break;
+        }
+    if( !bFuzzyInited ) {
+        string msg = "Fuzzy set has not been initialized";
+        NODE::driver->error(loc, msg);
+        exit(EXIT_FAILURE);
+    }
+
+    if (bClear_val)
+        for (int i = 0; i < fuzzy_set->GetSize(); i++)
+            fuzzy_set->GetBelong()[i].m_grade = 0;
+    
+    double min_diff = 1.7e+308;
+    double input;
+    if (val->GetType() == Type_number)
+        input = val->GetNumber();
+    else
+        input = val->GetInterger();
+    
+    int index_match;
+    for (int i = 0; i < fuzzy_set->GetSize(); i++) {
+        double diff = abs(fuzzy_set->GetBelong()[i].m_value - input);
+        if ( diff < min_diff ) {
+            min_diff = diff;
+            index_match = i;
+        }
+    }
+    
+    input = fuzzy_set->GetBelong()[index_match].m_value;
+    
+    if (index_match == 0) {
+        fuzzy_set->GetBelong()[0].m_grade = grade_val;
+        fuzzy_set->GetBelong()[1].m_grade = grade_val * rate_val;
+    } 
+    else if (index_match == fuzzy_set->GetSize() - 1) {
+        fuzzy_set->GetBelong()[fuzzy_set->GetSize() - 1].m_grade = grade_val;
+        fuzzy_set->GetBelong()[fuzzy_set->GetSize() - 2].m_grade = grade_val * rate_val;
+    }
+    else {
+        fuzzy_set->GetBelong()[index_match].m_grade = grade_val;
+        fuzzy_set->GetBelong()[index_match - 1].m_grade = grade_val * rate_val;
+        fuzzy_set->GetBelong()[index_match + 1].m_grade = grade_val * rate_val;
+    }
+    
+    if (val->GetType() == Type_number)
+        val->GetNumber() = input;
+    else
+        val->GetInterger() = input;
+    
+	return val;
 }
 
 void usage(int code)
