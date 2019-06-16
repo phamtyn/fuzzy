@@ -26,7 +26,8 @@ make install
 
 Please see the INSTALL file for additional options.
 
-**Tip:** For a portable binary version you compile as below at the src directory:
+**Tip:** If you want bring the fuzzy binary to run as portable such as running on a virtual machine on a cloud, remove debugging symbols then gzip it:
 ```sh
-g++ -Wno-return-type -o fuzzy *.cc
+strip -d fuzzy
+gzip fuzzy
 ```
