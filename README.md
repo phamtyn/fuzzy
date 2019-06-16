@@ -3,7 +3,7 @@ Fuzzy is the implementation of the FUZZY programming language. Fuzzy is designed
 
 Full documentation at: <https://omarine.org/fuzzy>.
 
-Version: 1.4.1
+Version: 1.5.1
 
 Homepage: https://omarine.org
 
