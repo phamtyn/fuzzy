@@ -14,7 +14,7 @@ In order to compile Fuzzy you need following software packages:
 	- flex
 	- bison
 
-Basic:
+Basic configuring and building:
 
     ./configure --prefix=/usr
     make
@@ -23,7 +23,3 @@ Basic:
     make install
    
 See the file INSTALL for additional options.
-
-Tip: For a portable binary version you compile as below at the src directory:
-
-    g++ -Wno-return-type -o fuzzy *.cc
