@@ -255,12 +255,15 @@ DOUBLE   	[0-9]+"."[0-9]*
 } */
 "rule"     	return yy::fuzzy_parser::token::TOK_RULE;
 "=>"     	return yy::fuzzy_parser::token::TOK_DEDUCE;
-"discrete"     	return yy::fuzzy_parser::token::TOK_DISCRETE;
+"discrete"  return yy::fuzzy_parser::token::TOK_DISCRETE;
 "put"     	return yy::fuzzy_parser::token::TOK_PUT;
 ":="     	return yy::fuzzy_parser::token::TOK_ASSIGN_FUZ;
 "VERY"     	return yy::fuzzy_parser::token::TOK_VERY;
-"LITTLE"     	return yy::fuzzy_parser::token::TOK_LITTLE;
-"REALLY"     	return yy::fuzzy_parser::token::TOK_REALLY;
+"EXTREMELY" return yy::fuzzy_parser::token::TOK_EXTREMELY;
+"SEEMED"    return yy::fuzzy_parser::token::TOK_SEEMED;
+"BIT"    return yy::fuzzy_parser::token::TOK_BIT;
+"LITTLE"    return yy::fuzzy_parser::token::TOK_LITTLE;
+"REALLY"    return yy::fuzzy_parser::token::TOK_REALLY;
 "AND"     	return yy::fuzzy_parser::token::TOK_AND_FUZ;
 "OR"     	return yy::fuzzy_parser::token::TOK_OR_FUZ;
 "NOT"     	return yy::fuzzy_parser::token::TOK_NOT_FUZ;

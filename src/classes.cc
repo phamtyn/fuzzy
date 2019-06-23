@@ -1261,10 +1261,22 @@ NODE &NODE::assign(const NODE &t, Object *pFunction, bool bFunctionConvert)
 			{
 				case Type_number:
 					data->GetFuzzy()->GetValue() = t.data->GetNumber();
+                    if (data->IsFuzzy() == 1) {
+                        if (data->GetFuzzy()->GetValue() < data->GetMin())
+                            data->GetFuzzy()->GetValue() = data->GetMin();
+                        if (data->GetFuzzy()->GetValue() > data->GetMax())
+                            data->GetFuzzy()->GetValue() = data->GetMax();
+                    }
 					data->GetFuzzy()->InitBelong();
 					return *this;
 				case Type_interger:
 					data->GetFuzzy()->GetValue() = t.data->GetInterger();
+                    if (data->IsFuzzy() == 1) {
+                        if (data->GetFuzzy()->GetValue() < data->GetMin())
+                            data->GetFuzzy()->GetValue() = data->GetMin();
+                        if (data->GetFuzzy()->GetValue() > data->GetMax())
+                            data->GetFuzzy()->GetValue() = data->GetMax();
+                    }
 					data->GetFuzzy()->InitBelong();
 					return *this;	
 			}
@@ -1483,10 +1495,22 @@ NODE &NODE::assign(const NODE &t, Object *pFunction, bool bFunctionConvert)
 			{
 				case Type_number:
 					data->GetValue() = t.data->GetNumber();
+                    if (data->GetParent()->IsFuzzy() == 1) {
+                        if (data->GetValue() < data->GetParent()->GetMin())
+                            data->GetValue() = data->GetParent()->GetMin();
+                        if (data->GetValue() > data->GetParent()->GetMax())
+                            data->GetValue() = data->GetParent()->GetMax();
+                    }
 					data->InitBelong();
 					return *this;
 				case Type_interger:
 					data->GetValue() = t.data->GetInterger();
+                    if (data->GetParent()->IsFuzzy() == 1) {
+                        if (data->GetValue() < data->GetParent()->GetMin())
+                            data->GetValue() = data->GetParent()->GetMin();
+                        if (data->GetValue() > data->GetParent()->GetMax())
+                            data->GetValue() = data->GetParent()->GetMax();
+                    }
 					data->InitBelong();
 					return *this;	
 			}
@@ -1600,7 +1624,7 @@ std::ostream & operator<<(std::ostream &os, const NODE &t)
 
 Object * FuzzyToArray (Object *fuzzy, Object *array, const yy::location &loc)
 {
-	if(!NODE::driver->CheckFuzzyObject_discrete(fuzzy, loc, "FuzzyToArray function"))
+	if(!NODE::driver->CheckFuzzyObject_all(fuzzy, loc, "FuzzyToArray function"))
 		exit(EXIT_FAILURE);
 	if(array->GetClassId() != CLASS_ID_FUZZY_PAIR || !(array->GetType() & Type_array))
 	{
@@ -1640,22 +1664,47 @@ Object * FuzzyToArray (Object *fuzzy, Object *array, const yy::location &loc)
 	return array;
 }
 
-Object * Defuzz (Object *fuzzy, const yy::location &loc)
+Object * Defuzz (Object *fuzzy, Object *bContinuous, const yy::location &loc)
 {
-	if(!NODE::driver->CheckFuzzyObject_discrete(fuzzy, loc, "Defuzz function"))
+	if(!NODE::driver->CheckFuzzyObject_all(fuzzy, loc, "Defuzz function"))
 		exit(EXIT_FAILURE);
 	
-	fuzzy->MakeFuzzyClear();
+    if (bContinuous) {
+        if( !(bContinuous->GetType() == Type_bool || bContinuous->GetType() == Type_interger) )
+        {
+            string msg = "no match type, second argument must be a boolean value";
+            NODE::driver->error(loc, msg);
+            exit(EXIT_FAILURE);
+        }
+        int bContinuous_val;
+        if (bContinuous->GetType() == Type_bool)
+            bContinuous_val = bContinuous->GetFlag();
+        else
+            bContinuous_val = bContinuous->GetInterger();
+        fuzzy->MakeFuzzyClear(bContinuous_val);
+    }
+    else
+        fuzzy->MakeFuzzyClear();
 	
 	return fuzzy;
 }
 
 Object * ZeroFuzz (Object *fuzzy, const yy::location &loc)
 {
-	if(!NODE::driver->CheckFuzzyObject_discrete(fuzzy, loc, "ZeroFuzz function"))
+	if(!NODE::driver->CheckFuzzyObject_all(fuzzy, loc, "ZeroFuzz function"))
 		exit(EXIT_FAILURE);
 	
 	fuzzy->ZeroBelong();
+	
+	return fuzzy;
+}
+
+Object * Classify (Object *fuzzy, const yy::location &loc)
+{
+	if(!NODE::driver->CheckFuzzyObject_all(fuzzy, loc, "Classify function"))
+		exit(EXIT_FAILURE);
+	
+	fuzzy->Classify();
 	
 	return fuzzy;
 }

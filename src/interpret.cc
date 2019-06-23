@@ -59,10 +59,19 @@ int fuzzy_driver::interpret (NODE *tree, STRUCT *parentStruct)
 	case Node_type_struct_declare_fuzzy:
 	{
 		string &name = tree->left->left->data->GetString();
-		NODE *eval_min = tree_eval(tree->left->right->left, parentStruct);
-		NODE *eval_max = tree_eval(tree->left->right->right, parentStruct);
-		NODE *node_min = new NODE(Type_number, tree->left->right->left->loc);
-		NODE *node_max = new NODE(Type_number, tree->left->right->right->loc);
+        long size = tree->left->right->right->data->GetInterger();
+        
+        if(size < 2)
+		{
+			string text = "The size of a fuzzy term must be 2 or more";
+			error(tree->left->left->loc, text);
+			exit(EXIT_FAILURE);
+		}
+		
+		NODE *eval_min = tree_eval(tree->left->right->left->left, parentStruct);
+		NODE *eval_max = tree_eval(tree->left->right->left->right, parentStruct);
+		NODE *node_min = new NODE(Type_number, tree->left->right->left->left->loc);
+		NODE *node_max = new NODE(Type_number, tree->left->right->left->right->loc);
 		node_min->assign(*eval_min);
 		node_max->assign(*eval_max);
 		
@@ -81,8 +90,12 @@ int fuzzy_driver::interpret (NODE *tree, STRUCT *parentStruct)
 		}
 		STRUCT *thisType = new STRUCT(name, parentStruct);
 		parentStruct->Add_type(thisType, name);
-		thisType->SetFuzzy(_min, _max);
-		for (t = tree->right; t != NULL; t = t->right) {
+		thisType->SetFuzzy(_min, _max, size);
+        
+        Object *fuzzy_size = new INTERGER(size);
+        thisType->Add_var(fuzzy_size, "size");
+		
+        for (t = tree->right; t != NULL; t = t->right) {
 			(void)interpret (t->left, thisType);
 		}
 		thisType->SetCompleted();
@@ -986,7 +999,7 @@ int fuzzy_driver::interpret (NODE *tree, STRUCT *parentStruct)
 		while(t != NULL)
 		{
 			v = tree_eval(t->left, parentStruct);
-			if(!CheckFuzzyObject_discrete(v->data, t->left->loc, "prints statement"))
+			if(!CheckFuzzyObject_all(v->data, t->left->loc, "prints statement"))
 				exit(EXIT_FAILURE);
 			Object *fuzzy_set;
 		
@@ -1036,78 +1049,314 @@ int fuzzy_driver::interpret (NODE *tree, STRUCT *parentStruct)
 			
 		parent_dest->GetFuzzy()->Union(*rule);
 		
-		parent_dest->MakeFuzzyClear();
+		//parent_dest->MakeFuzzyClear();
 		delete rule;
 		
 		break;
 	}
 
 	default:
-	/* Appears to be an expression statement.  Throw away the value. */
-	//(void)tree_eval (tree,  parentStruct);
-	
-	(void)interpret (tree->left, parentStruct);
-	(void)interpret (tree->right, parentStruct);
-	
-	break;
+        /* Appears to be an expression statement.  Throw away the value. */
+        //(void)tree_eval (tree,  parentStruct);
+        
+        (void)interpret (tree->left, parentStruct);
+        (void)interpret (tree->right, parentStruct);
+        
+        break;
 	}
 	return 1;
 }
 
+inline FUZZY *inference (FUZZY *from, const FUZZY *dest) {
+    
+    register FUZZY *r;
+    r = new FUZZY(*dest);
+    r->MakeMatrix(*from);
+    FUZZY *from_input = from->GetParent()->GetFuzzy();
+    
+    r->MakeBelong(*from_input);
+    
+    return r;
+}
+
+FUZZY *fuzzy_driver::eval_rule_left(NODE *tree, FUZZY *dest, STRUCT *parentStruct) {
+    
+    register FUZZY *left, *right, *r, *left_dest, *right_dest;
+    register NODE *t;
+    
+    switch (tree->type) {
+        case Node_and:
+            left = eval_rule_left(tree->left, dest, parentStruct);
+			right = eval_rule_left(tree->right, dest, parentStruct);
+            if (left->GetParent() != dest->GetParent() && left->GetParent() == right->GetParent()) {
+                r = new FUZZY(*left);
+                r->Intersect(*left, *right);
+                delete left;
+                delete right;
+                return r;
+            }
+            if (left->GetParent() != dest->GetParent()) {
+                left_dest = inference(left, dest);
+                delete left;
+                left = left_dest;
+            }
+            if (right->GetParent() != dest->GetParent()) {
+                right_dest = inference(right, dest);
+                delete right;
+                right = right_dest;
+            }
+            r = new FUZZY(*dest);
+            r->Intersect(*left, *right);
+            delete left;
+            delete right;
+            return r;
+            
+        case Node_or:
+            left = eval_rule_left(tree->left, dest, parentStruct);
+			right = eval_rule_left(tree->right, dest, parentStruct);
+            if (left->GetParent() != dest->GetParent() && left->GetParent() == right->GetParent()) {
+                r = new FUZZY(*left);
+                r->Union(*left, *right);
+                delete left;
+                delete right;
+                return r;
+            }
+            if (left->GetParent() != dest->GetParent()) {
+                left_dest = inference(left, dest);
+                delete left;
+                left = left_dest;
+            }
+            if (right->GetParent() != dest->GetParent()) {
+                right_dest = inference(right, dest);
+                delete right;
+                right = right_dest;
+            }
+            r = new FUZZY(*dest);
+            r->Union(*left, *right);
+            delete left;
+            delete right;
+            return r;
+            
+        case Node_very:
+            left = eval_rule_left(tree->left, dest, parentStruct);
+            r = new FUZZY(left->Very());
+            delete left;
+            return r;
+            
+        case Node_extremely:
+            left = eval_rule_left(tree->left, dest, parentStruct);
+            r = new FUZZY(left->Extremely());
+            delete left;
+            return r;
+            
+        case Node_seemed:
+            left = eval_rule_left(tree->left, dest, parentStruct);
+            r = new FUZZY(left->Seemed());
+            delete left;
+            return r;
+            
+        case Node_bit:
+            left = eval_rule_left(tree->left, dest, parentStruct);
+            r = new FUZZY(left->Bit());
+            delete left;
+            return r;
+            
+        case Node_little:
+            left = eval_rule_left(tree->left, dest, parentStruct);
+            r = new FUZZY(left->Little());
+            delete left;
+            return r;
+            
+        case Node_really:
+            left = eval_rule_left(tree->left, dest, parentStruct);
+            r = new FUZZY(left->Really());
+            delete left;
+            return r;
+            
+        case Node_not:
+            left = eval_rule_left(tree->left, dest, parentStruct);
+            r = new FUZZY(left->Not());
+            delete left;
+            return r;
+    }
+    
+    t = tree_eval (tree, parentStruct);
+    Object *pObject = t->data;
+    if(!CheckFuzzyObject(pObject, tree->loc))
+        exit(EXIT_FAILURE);
+    FUZZY *from = static_cast<FUZZY *>(pObject);
+    return new FUZZY(*from);
+}
+
 FUZZY *fuzzy_driver::eval_fuzzy_rule(NODE *tree, FUZZY *dest, STRUCT *parentStruct)
 {
-	register FUZZY *left, *right, *r;
+	register FUZZY *left, *right, *r, *from, *left_dest, *right_dest;
 	register NODE *t;
 	
 	switch (tree->type)
 	{
 		case Node_and:
 		{
-			left = eval_fuzzy_rule(tree->left, dest, parentStruct);
-			right = eval_fuzzy_rule(tree->right, dest, parentStruct);
-			r = new FUZZY;
-			r->Intersect(*left, *right);
-			delete left;
-			delete right;
-			return r;
+			left = eval_rule_left(tree->left, dest, parentStruct);
+			right = eval_rule_left(tree->right, dest, parentStruct);
+            
+            if (left->GetParent() != dest->GetParent() && left->GetParent() == right->GetParent()) {
+                from = new FUZZY(*left);
+                from->Intersect(*left, *right);
+                delete left;
+                delete right;
+            
+                r = inference (from, dest);
+                
+                delete from;
+            
+                return r;
+            }
+            if (left->GetParent() != dest->GetParent()) {
+                left_dest = inference(left, dest);
+                delete left;
+                left = left_dest;
+            }
+            if (right->GetParent() != dest->GetParent()) {
+                right_dest = inference(right, dest);
+                delete right;
+                right = right_dest;
+            }
+            r = new FUZZY(*dest);
+            r->Intersect(*left, *right);
+            delete left;
+            delete right;
+            return r;
 		}
 		case Node_or:
 		{
-			left = eval_fuzzy_rule(tree->left, dest, parentStruct);
-			right = eval_fuzzy_rule(tree->right, dest, parentStruct);
-			r = new FUZZY;
-			r->Union(*left, *right);
-			delete left;
-			delete right;
-			return r;
+            left = eval_rule_left(tree->left, dest, parentStruct);
+			right = eval_rule_left(tree->right, dest, parentStruct);
+            
+            if (left->GetParent() != dest->GetParent() && left->GetParent() == right->GetParent()) {
+                from = new FUZZY(*left);
+                from->Union(*left, *right);
+                delete left;
+                delete right;
+            
+                r = inference (from, dest);
+                
+                delete from;
+            
+                return r;
+            }
+            if (left->GetParent() != dest->GetParent()) {
+                left_dest = inference(left, dest);
+                delete left;
+                left = left_dest;
+            }
+            if (right->GetParent() != dest->GetParent()) {
+                right_dest = inference(right, dest);
+                delete right;
+                right = right_dest;
+            }
+            r = new FUZZY(*dest);
+            r->Union(*left, *right);
+            delete left;
+            delete right;
+            return r;
 		}
 		case Node_not:
 		{
-			left = eval_fuzzy_rule(tree->left, dest, parentStruct);
-			r = new FUZZY;
-			r->Not(*left);
-			delete left;
+            left = eval_rule_left(tree->left, dest, parentStruct);
+			from = new FUZZY(left->Not());
+            delete left;
+            if (from->GetParent() == dest->GetParent())
+                return from;
+            
+			r = inference (from, dest);
+			
+            delete from;
+            
 			return r;
 		}
 		case Node_very:
 		{
-			left = eval_fuzzy_rule(tree->left, dest, parentStruct);
-			r = new FUZZY(left->Very());
-			delete left;
+            left = eval_rule_left(tree->left, dest, parentStruct);
+			from = new FUZZY(left->Very());
+            delete left;
+            if (from->GetParent() == dest->GetParent())
+                return from;
+            
+			r = inference (from, dest);
+			
+            delete from;
+            
+			return r;
+		}
+		case Node_extremely:
+		{
+            left = eval_rule_left(tree->left, dest, parentStruct);
+			from = new FUZZY(left->Extremely());
+            delete left;
+            if (from->GetParent() == dest->GetParent())
+                return from;
+            
+			r = inference (from, dest);
+			
+            delete from;
+            
 			return r;
 		}
 		case Node_little:
 		{
-			left = eval_fuzzy_rule(tree->left, dest, parentStruct);
-			r = new FUZZY(left->Little());
-			delete left;
+			left = eval_rule_left(tree->left, dest, parentStruct);
+			from = new FUZZY(left->Little());
+            delete left;
+            if (from->GetParent() == dest->GetParent())
+                return from;
+            
+			r = inference (from, dest);
+			
+            delete from;
+            
+			return r;
+		}
+		case Node_seemed:
+		{
+            left = eval_rule_left(tree->left, dest, parentStruct);
+			from = new FUZZY(left->Seemed());
+            delete left;
+            if (from->GetParent() == dest->GetParent())
+                return from;
+            
+			r = inference (from, dest);
+			
+            delete from;
+            
+			return r;
+		}
+		case Node_bit:
+		{
+            left = eval_rule_left(tree->left, dest, parentStruct);
+			from = new FUZZY(left->Bit());
+            delete left;
+            if (from->GetParent() == dest->GetParent())
+                return from;
+            
+			r = inference (from, dest);
+			
+            delete from;
+            
 			return r;
 		}
 		case Node_really:
 		{
-			left = eval_fuzzy_rule(tree->left, dest, parentStruct);
-			r = new FUZZY(left->Really());
-			delete left;
+            left = eval_rule_left(tree->left, dest, parentStruct);
+			from = new FUZZY(left->Really());
+            delete left;
+            if (from->GetParent() == dest->GetParent())
+                return from;
+            
+			r = inference (from, dest);
+			
+            delete from;
+            
 			return r;
 		}
 		
@@ -1117,13 +1366,9 @@ FUZZY *fuzzy_driver::eval_fuzzy_rule(NODE *tree, FUZZY *dest, STRUCT *parentStru
 			Object *pObject = t->data;
 			if(!CheckFuzzyObject(pObject, tree->loc))
 				exit(EXIT_FAILURE);
-			FUZZY *from = static_cast<FUZZY *>(pObject);
+			from = static_cast<FUZZY *>(pObject);
 			
-			r = new FUZZY(*dest);
-			r->MakeMatrix(*from);
-			FUZZY *from_input = from->GetParent()->GetFuzzy();
-			
-			r->MakeBelong(*from_input);
+			r = inference (from, dest);
 			
 			return r;
 		}

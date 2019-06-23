@@ -251,8 +251,11 @@ public:
 			       int param_count, const Object *pUserFunction, const string &name);
   bool CheckFuzzyObject(Object *pObject, const yy::location &loc);
   bool CheckFuzzyObject_discrete(Object *pObject, const yy::location &loc, const string &statement);
+  bool CheckFuzzyObject_all(Object *pObject, const yy::location &loc, const string &statement);
   
   FUZZY *eval_fuzzy_rule(NODE *tree, FUZZY *dest, STRUCT *parentStruct);
+  
+  FUZZY *eval_rule_left(NODE *tree, FUZZY *dest, STRUCT *parentStruct);
   
   void set_reading(const string &arg);
   
@@ -266,6 +269,20 @@ inline bool fuzzy_driver::CheckFuzzyObject_discrete(Object *pObject,
 		))
 	{
 		string msg = "this " + statement + " can only be used for discrete fuzzy sets";
+		error(loc, msg);
+		return false;
+	}
+	return true;
+}
+
+inline bool fuzzy_driver::CheckFuzzyObject_all(Object *pObject, 
+						     const yy::location &loc, const string &statement)
+{
+	if(!(pObject->GetType() == Type_struct && pObject->IsFuzzy() ||
+		pObject->GetType() == Type_fuzzy && pObject->GetParent()->IsFuzzy()
+		))
+	{
+		string msg = "this " + statement + " can only be used for fuzzy terms or fuzzy objects in a fuzzy term";
 		error(loc, msg);
 		return false;
 	}

@@ -117,6 +117,9 @@
   OR_FUZ	"OR"
   NOT_FUZ	"NOT"
   VERY		"VERY"
+  EXTREMELY	"EXTREMELY"
+  SEEMED	"SEEMED"
+  BIT	"BIT"
   LITTLE	"LITTLE"
   REALLY	"REALLY"
 ;
@@ -153,7 +156,10 @@
 %left "AND"
 %precedence REALLY
 %precedence LITTLE
+%precedence SEEMED
 %precedence VERY
+%precedence EXTREMELY
+%precedence BIT
 %precedence "NOT"
 %left RELOP
 %left "+" "-"
@@ -492,12 +498,14 @@ declare
 		{
 		    $$ = node (node ($2, @2), Node_type_struct_declare, $4, @$);
 		}
-	| TERM NAME "(" exp "," exp ")"  "{"  declares "}" SEMI	
+	| TERM NAME "(" exp "," exp "," INT ")"  "{"  declares "}" SEMI	
 		{
 		    NODE *name = node ($2, @2);
 		    NODE *min_max = node ($4, Node_illegal, $6, @4 + @6);
-		    NODE *header = node (name, Node_illegal, min_max, @2 + @7);
-		    NODE *body = $9;
+		    NODE *size = node ($8, @8);
+		    NODE *params = node (min_max, Node_illegal, size, @4 + @8);
+		    NODE *header = node (name, Node_illegal, params, @2 + @9);
+		    NODE *body = $11;
 		    $$ = node (header, Node_type_struct_declare_fuzzy, body, @$);
 		}
 	| TERM NAME "(" INT ")"  "{"  declares "}" SEMI	
@@ -612,6 +620,9 @@ exp_fuzzy
 	| "REALLY" exp_fuzzy 		{ $$ = node ($2, Node_really, NULL, @$);	}
 	| "LITTLE" exp_fuzzy 		{ $$ = node ($2, Node_little, NULL, @$);	}
 	| "VERY" exp_fuzzy 		{ $$ = node ($2, Node_very, NULL, @$);		}
+	| "EXTREMELY" exp_fuzzy 		{ $$ = node ($2, Node_extremely, NULL, @$);		}
+	| "SEEMED" exp_fuzzy 		{ $$ = node ($2, Node_seemed, NULL, @$);		}
+	| "BIT" exp_fuzzy 		{ $$ = node ($2, Node_bit, NULL, @$);		}
 	| "NOT" exp_fuzzy 		{ $$ = node ($2, Node_not, NULL, @$);		}
 	| "(" exp_fuzzy ")" 		{ $$ = $2; $$->loc = @$;			}
 	;	

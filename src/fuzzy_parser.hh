@@ -363,22 +363,25 @@ namespace yy {
         TOK_OR_FUZ = 306,
         TOK_NOT_FUZ = 307,
         TOK_VERY = 308,
-        TOK_LITTLE = 309,
-        TOK_REALLY = 310,
-        TOK_BOOLEN = 311,
-        TOK_NUM = 312,
-        TOK_INT = 313,
-        TOK_STRING = 314,
-        TOK_NAME = 315,
-        TOK_STRING_KEY = 316,
-        TOK_NUMBER_KEY = 317,
-        TOK_BOOL_KEY = 318,
-        TOK_FUZZY_KEY = 319,
-        TOK_INT_KEY = 320,
-        TOK_OPERATOR = 321,
-        TOK_ASSIGNOP = 322,
-        TOK_RELOP = 323,
-        TOK_REDIRECT_OP = 324
+        TOK_EXTREMELY = 309,
+        TOK_SEEMED = 310,
+        TOK_BIT = 311,
+        TOK_LITTLE = 312,
+        TOK_REALLY = 313,
+        TOK_BOOLEN = 314,
+        TOK_NUM = 315,
+        TOK_INT = 316,
+        TOK_STRING = 317,
+        TOK_NAME = 318,
+        TOK_STRING_KEY = 319,
+        TOK_NUMBER_KEY = 320,
+        TOK_BOOL_KEY = 321,
+        TOK_FUZZY_KEY = 322,
+        TOK_INT_KEY = 323,
+        TOK_OPERATOR = 324,
+        TOK_ASSIGNOP = 325,
+        TOK_RELOP = 326,
+        TOK_REDIRECT_OP = 327
       };
     };
 
@@ -705,7 +708,7 @@ namespace yy {
       yyfinal_ = 3, ///< Termination state number.
       yyterror_ = 1,
       yyerrcode_ = 256,
-      yyntokens_ = 70  ///< Number of tokens.
+      yyntokens_ = 73  ///< Number of tokens.
     };
 
 
@@ -716,7 +719,7 @@ namespace yy {
 
 
 } // yy
-#line 720 "fuzzy_parser.hh" // lalr1.cc:404
+#line 723 "fuzzy_parser.hh" // lalr1.cc:404
 
 
 

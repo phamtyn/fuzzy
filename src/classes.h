@@ -28,8 +28,10 @@
 # define error_prefix 		"Fuzzy: "
 # define BASETYPE_ID_LIMIT 	100
 # define CLASS_ID_FUZZY_PAIR 	BASETYPE_ID_LIMIT
-# define MATRIX_SIZE 		11
-# define K_GAUSS 		25.0
+# define MATRIX_SIZE 		100
+
+# define K_GAUSS 		0.8
+# define K_EXTREMELY 		8
 
 # include <string>
 # include <iostream>
@@ -179,9 +181,12 @@ typedef enum {
   Node_switch, 
   Node_system, 
   Node_fuzzy_rule, 
-  Node_very, 
+  Node_very,
   Node_little, 
-  Node_really, 
+  Node_really,
+  Node_extremely,
+  Node_seemed,
+  Node_bit,
   Node_var_decl_fuzzy_discrete, 
   Node_fuzzy_input, 
   Node_print_set, 
@@ -216,10 +221,11 @@ using std::endl;
 double min(double a, double b);
 double max(double a, double b);
 Object * FuzzyToArray (Object *, Object *, const yy::location &);
-Object * Defuzz (Object *, const yy::location &);
+Object * Defuzz (Object *,  Object *, const yy::location &);
 Object * ZeroFuzz (Object *, const yy::location &);
 Object * PutReading (Object *, Object *, const yy::location &);
 Object * PutReading (Object *, Object *, Object *, Object *, Object *, const yy::location &);
+Object * Classify (Object *fuzzy, const yy::location &loc);
 
 typedef FuzMap< string, STRUCT * > TYPE_MAP;
 typedef FuzMultiMap< string, Object * > VAR_MAP;
@@ -296,7 +302,10 @@ public:
 	virtual int IsFuzzy() {}
 	virtual FUZZY *GetFuzzy() {}
 	virtual int &GetSize() {}
-	virtual double MakeFuzzyClear() {}
+	virtual double MakeFuzzyClear(bool bContinuous = false) {}
+	virtual double Classify() {}
+	virtual double GetMin() {}
+	virtual double GetMax() {}
 	
 	virtual ~Object() {}
 	
@@ -495,7 +504,7 @@ class STRUCT : public Object {
 public:
 	
 	STRUCT() : Object((NODE *)NULL), m_bComplete(false), m_parent(NULL), m_fuzzy(NULL), 
-					m_child(NULL), m_pFunctionValue(NULL), m_bFuzzy(0) {
+					m_child(NULL), m_pFunctionValue(NULL), m_bFuzzy(0), m_fuzzy_size(MATRIX_SIZE) {
 						m_type = Type_struct;
 					}
 	STRUCT(const string &_typename, STRUCT *parent, DATATYPE type = Type_struct | Type_classobject);
@@ -505,6 +514,7 @@ public:
 	TYPE_MAP TypeMap;
 	VAR_MAP VarMap;
 	PARAM_ARRAY ParamArray;
+    FuzList < FUZZY * > FuzzyList;
 	
 	bool CheckName_type_decl(const string &typename_);
 	int CheckName_var_decl(const string &varname, const NODE *tree, Object *&pFunction_out);
@@ -548,10 +558,13 @@ public:
 	
 	FUZZY *GetFuzzy() { return m_fuzzy; }
 	
-	void SetFuzzy(double _min, double _max) { m_min = _min; m_max = _max; m_bFuzzy = 1; }
+	void SetFuzzy(double _min, double _max, int fuzzy_size) {
+        m_min = _min; m_max = _max; m_bFuzzy = 1; m_fuzzy_size = fuzzy_size;
+    }
 	void SetFuzzy(int fuzzy_size) { m_fuzzy_size = fuzzy_size; m_bFuzzy = 2; }
 	int IsFuzzy() { return m_bFuzzy; }
-	double MakeFuzzyClear();
+	double MakeFuzzyClear(bool);
+    double Classify();
 	void ZeroBelong();
 	
 	double GetMin() { return m_min; }
@@ -638,6 +651,7 @@ public:
 		m_belong = new FUZZY_PAIR[m_size];	
 		ZeroBelong();
 	}
+	/*
 	FUZZY(double value) : Object(Type_fuzzy, "fuzzy", CLASS_ID_FUZZY),
 		m_value(value), m_parent(NULL), m_matrix(NULL) {
 	  
@@ -645,13 +659,11 @@ public:
 		m_belong = new FUZZY_PAIR[m_size];	
 		InitBelong();
 	}
+	*/
 	FUZZY(STRUCT *parent) : Object(Type_fuzzy, "fuzzy", CLASS_ID_FUZZY), m_value(0), 
 		m_parent(parent), m_matrix(NULL) { 
 	  
-		m_size = MATRIX_SIZE;
-		
-		if (m_parent->IsFuzzy() == 2)
-			m_size = m_parent->m_fuzzy_size;
+        m_size = m_parent->m_fuzzy_size;
 			
 		m_belong = new FUZZY_PAIR[m_size];	
 		ZeroBelong();
@@ -675,15 +687,20 @@ public:
 	void ZeroBelong() { memset(m_belong, 0, sizeof(FUZZY_PAIR) * m_size); }
 	void Intersect(const FUZZY &t1, const FUZZY &t2);
 	void Union(const FUZZY &t1, const FUZZY &t2);
-	void Not(const FUZZY &t);
+	FUZZY Not();
 	FUZZY Very();
 	FUZZY Little();
 	FUZZY Really();
+    FUZZY Extremely();
+    FUZZY Seemed();
+    FUZZY Bit();
 	
 	void MakeMatrix(const FUZZY &from);
 	void MakeBelong(const FUZZY &from_input);
 	void Union(const FUZZY &from_rule);
-	double MakeFuzzyClear();
+	double MakeFuzzyClear(bool);
+    double GetMeanValue();
+    double Classify();
 	
 	friend class STRUCT;
 	friend class NODE;
@@ -707,7 +724,10 @@ inline FUZZY &FUZZY::operator=(const Object &t) {
 		return *this;
 	const FUZZY *pt = static_cast<const FUZZY *>(&t);
 	
-	m_value = pt->m_value;
+	delete m_belong;
+    m_size = pt->m_size;
+    m_belong = new FUZZY_PAIR[m_size];
+    m_value = pt->m_value;
 	for (int i = 0; i < m_size; i++)
 		m_belong[i] = pt->m_belong[i];
 	return *this;
@@ -716,6 +736,9 @@ inline FUZZY &FUZZY::operator=(const Object &t) {
 inline FUZZY &FUZZY::operator=(const FUZZY &t) {
 	if (this == &t)
 		return *this;
+    delete m_belong;
+    m_size = t.m_size;
+    m_belong = new FUZZY_PAIR[m_size];
 	m_value = t.m_value;
 	for (int i = 0; i < m_size; i++)
 		m_belong[i] = t.m_belong[i];
@@ -730,8 +753,9 @@ inline void FUZZY::InitBelong()
 	for (int i = 0; i < m_size; i++)
 	{
 		double xi = _min + (_max - _min) / (m_size - 1) * i;
-		m_belong[i].m_grade = exp(-pow((m_value - xi) / (_max - _min), 2) * K_GAUSS);
-		//m_belong[i].m_value = xi;
+		m_belong[i].m_grade = 
+            exp(-pow((m_value - xi) / (_max - _min), 2) * K_GAUSS / pow(1.0 / (m_size - 1), 2));
+		m_belong[i].m_value = xi;
 	}
 }
 
@@ -747,31 +771,57 @@ inline void FUZZY::Union(const FUZZY &t1, const FUZZY &t2)
 		m_belong[i].m_grade = max(t1.m_belong[i].m_grade, t2.m_belong[i].m_grade);
 }
 
-inline void FUZZY::Not(const FUZZY &t)
+inline FUZZY FUZZY::Not()
 {
+    FUZZY t(*this);
 	for (int i = 0; i < m_size; i++)
-		m_belong[i].m_grade = 1.0 - t.m_belong[i].m_grade;
+		t.m_belong[i].m_grade = 1.0 - m_belong[i].m_grade;
+    return t;
 }
 
 inline FUZZY FUZZY::Very()
 {
-	FUZZY t;
+	FUZZY t(*this);
 	for (int i = 0; i < m_size; i++)
 		t.m_belong[i].m_grade = pow(m_belong[i].m_grade, 2);
-	return t;	
+	return t;
+}
+
+inline FUZZY FUZZY::Extremely()
+{
+	FUZZY t(*this);
+	for (int i = 0; i < m_size; i++)
+		t.m_belong[i].m_grade = pow(m_belong[i].m_grade, K_EXTREMELY);
+	return t;
 }
 
 inline FUZZY FUZZY::Little()
 {
-	FUZZY t;
+	FUZZY t(*this);
 	for (int i = 0; i < m_size; i++)
 		t.m_belong[i].m_grade = pow(m_belong[i].m_grade, 0.5);
 	return t;	
 }
 
+inline FUZZY FUZZY::Seemed()
+{
+	FUZZY t(*this);
+	for (int i = 0; i < m_size; i++)
+		t.m_belong[i].m_grade = pow(m_belong[i].m_grade, 0.125);
+	return t;	
+}
+
+inline FUZZY FUZZY::Bit()
+{
+	FUZZY t(*this);
+	for (int i = 0; i < m_size; i++)
+		t.m_belong[i].m_grade = m_belong[i].m_grade / 2;
+	return t;	
+}
+
 inline FUZZY FUZZY::Really()
 {
-	FUZZY t;
+	FUZZY t(*this);
 	for (int i = 0; i < m_size; i++)
 	{
 		if (m_belong[i].m_grade <= 0.5)
@@ -815,7 +865,7 @@ inline void FUZZY::Union(const FUZZY &from_rule)
 		m_belong[i].m_grade = max(m_belong[i].m_grade, from_rule.m_belong[i].m_grade);
 }
 
-inline double FUZZY::MakeFuzzyClear()
+inline double FUZZY::MakeFuzzyClear(bool bContinuous = false)
 {
 	double _min = m_parent->m_min, _max = m_parent->m_max;
 	
@@ -823,37 +873,75 @@ inline double FUZZY::MakeFuzzyClear()
 	{
 		for (int i = 0; i < m_size; i++)
 			m_belong[i].m_value = _min + (_max - _min) / (m_size - 1) * i;
-	}
+    }
+    if (bContinuous) {
+        double total_a = 0;
+        double total_b = 0;
+        for (int i = 0; i < m_size - 1; i++)
+        {
+            double x1 = m_belong[i].m_value;
+            double x2 = m_belong[i + 1].m_value;
+            double y1 = m_belong[i].m_grade;
+            double y2 = m_belong[i + 1].m_grade;
+            double dx = x2 - x1;
+            double dy = y2 - y1;
+            if (dx == 0)
+                return m_value = 0;
+            double Fax1 = 1.0/2 * pow(x1, 2) * dy / dx + x1 * (y1 - x1 * dy / dx);	
+            double Fax2 = 1.0/2 * pow(x2, 2) * dy / dx + x2 * (y1 - x1 * dy / dx);
+            double a = Fax2 - Fax1;
+            
+            double Fbx1 = 1.0/3 * pow(x1, 3) * dy / dx + 1.0/2 * pow(x1, 2) * (y1 - x1 * dy / dx);	
+            double Fbx2 = 1.0/3 * pow(x2, 3) * dy / dx + 1.0/2 * pow(x2, 2) * (y1 - x1 * dy / dx);
+            double b = Fbx2 - Fbx1;
+            
+            total_a += a;
+            total_b += b;
+        }
+        
+        if (total_a == 0)
+            return m_value = 0;
+        
+        return m_value = total_b / total_a;
+    } else
+        return m_value = GetMeanValue();
+}
+
+inline double FUZZY::GetMeanValue()
+{
+	double _min = m_parent->m_min, _max = m_parent->m_max;
 	
-	double total_a = 0;
-	double total_b = 0;
-	
-	for (int i = 0; i < m_size - 1; i++)
+	if (m_parent->IsFuzzy() == 1)
 	{
-		double x1 = m_belong[i].m_value;
-		double x2 = m_belong[i + 1].m_value;
-		double y1 = m_belong[i].m_grade;
-		double y2 = m_belong[i + 1].m_grade;
-		double dx = x2 - x1;
-		double dy = y2 - y1;
-		if (dx == 0)
-			return m_value = 0;
-		double Fax1 = 1.0/2 * pow(x1, 2) * dy / dx + x1 * (y1 - x1 * dy / dx);	
-		double Fax2 = 1.0/2 * pow(x2, 2) * dy / dx + x2 * (y1 - x1 * dy / dx);
-		double a = Fax2 - Fax1;
-		
-		double Fbx1 = 1.0/3 * pow(x1, 3) * dy / dx + 1.0/2 * pow(x1, 2) * (y1 - x1 * dy / dx);	
-		double Fbx2 = 1.0/3 * pow(x2, 3) * dy / dx + 1.0/2 * pow(x2, 2) * (y1 - x1 * dy / dx);
-		double b = Fbx2 - Fbx1;
-		
-		total_a += a;
-		total_b += b;
-	}
+		for (int i = 0; i < m_size; i++)
+			m_belong[i].m_value = _min + (_max - _min) / (m_size - 1) * i;
+    }
+    
+    double total_grades = 0, total_products = 0;
+    for (int i = 0; i < m_size; i++) {
+        total_grades += m_belong[i].m_grade;
+        total_products += m_belong[i].m_grade * m_belong[i].m_value;
+    }
+    return total_products / total_grades;
+}
+
+inline double FUZZY::Classify()
+{
 	
-	if (total_a == 0)
-		return m_value = 0;
-	
-	return m_value = total_b / total_a;
+    double min_diff = 1.7e+308, class_value = 0;
+    STRUCT * parent = GetParent();
+    double mean = GetMeanValue();
+    
+    POSITION pos = parent->FuzzyList.GetHeadPosition();
+    while (pos) {
+        FUZZY * &pFuzzy = parent->FuzzyList.GetNext(pos);
+        double diff = abs(pFuzzy->GetMeanValue() - mean);
+        if ( diff < min_diff ) {
+            min_diff = diff;
+            class_value = pFuzzy->m_value;
+        }
+    }
+    return m_value = class_value;
 }
 
 inline ARRAY::ARRAY(const ARRAY &t) : Object((NODE *)NULL)
@@ -1002,7 +1090,7 @@ inline ARRAY::ARRAY(STRUCT *parent, STRUCT *ClassObject, int size, bool bInit) :
 
 inline STRUCT::STRUCT(const string &_typename, STRUCT *parent, DATATYPE type) : 
 	m_parent(parent), m_child(NULL), Object(type, _typename), 
-	m_bComplete(false), m_pFunctionValue(NULL), m_fuzzy(NULL), m_bFuzzy(0)
+	m_bComplete(false), m_pFunctionValue(NULL), m_fuzzy(NULL), m_bFuzzy(0), m_fuzzy_size(MATRIX_SIZE)
 {
 	m_classid = CurrentId++;
 	m_ClassObject = this;
@@ -1010,7 +1098,7 @@ inline STRUCT::STRUCT(const string &_typename, STRUCT *parent, DATATYPE type) :
 
 inline STRUCT::STRUCT(STRUCT *parent, DATATYPE type) :  
 		m_parent(parent), m_child(NULL), Object(type), 
-		m_bComplete(false), m_pFunctionValue(NULL), m_fuzzy(NULL), m_bFuzzy(0)
+		m_bComplete(false), m_pFunctionValue(NULL), m_fuzzy(NULL), m_bFuzzy(0), m_fuzzy_size(MATRIX_SIZE)
 {
 }
 
@@ -1395,6 +1483,7 @@ inline void STRUCT::init(const STRUCT &t)
 	if (m_name.empty())
 		m_name = t.m_name;
 	m_bFuzzy = t.m_bFuzzy;
+    m_fuzzy_size = t.m_fuzzy_size;
 	if (m_bFuzzy)
 	{
 		if (m_bFuzzy == 1)
@@ -1402,8 +1491,7 @@ inline void STRUCT::init(const STRUCT &t)
 			m_min = t.m_min;
 			m_max = t.m_max;
 		}
-		else
-			m_fuzzy_size = t.m_fuzzy_size;
+			
 		m_fuzzy = new FUZZY(this);
 	}
 	
@@ -1450,6 +1538,7 @@ inline void STRUCT::init(const STRUCT &t)
 			{
 				FUZZY *pElement = new FUZZY(this);
 				VarMap.Insert(p->m_key, pElement);
+                FuzzyList.AddTail(pElement);
 				break;
 			}
 			default:
@@ -1588,9 +1677,14 @@ inline double max(double a, double b)
 	return b;	
 }
 
-inline double STRUCT::MakeFuzzyClear()
+inline double STRUCT::MakeFuzzyClear(bool bContinuous = false)
 {	
-	return m_fuzzy->MakeFuzzyClear();
+	return m_fuzzy->MakeFuzzyClear(bContinuous);
+}
+
+inline double STRUCT::Classify()
+{	
+	return m_fuzzy->Classify();
 }
 
 inline void STRUCT::ZeroBelong() { m_fuzzy->ZeroBelong(); }

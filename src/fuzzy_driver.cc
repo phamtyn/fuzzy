@@ -144,8 +144,10 @@ fuzzy_driver::init_functions()
   functions_buildin2["PutReading"] = PutReading;
   functions_buildin5["PutReading"] = PutReading;
   
-  functions_buildin1["Defuzz"] = Defuzz;
+  functions_buildin2["Defuzz"] = Defuzz;
+  
   functions_buildin1["ZeroFuzz"] = ZeroFuzz;
+  functions_buildin1["Classify"] = Classify;
 }
 
 NODE *fuzzy_driver::new_node (NODE *left, NODETYPE op, NODE *right, const yy::location &loc)
@@ -565,6 +567,27 @@ Object *fuzzy_driver::do_namespace(NODE *tree, STRUCT *parentStruct)
 			if(pObject_buildin)
 				return pObject_buildin;
 			
+            if (name == "Defuzz") {
+                FUNC_PAIR2 *p2 = functions_buildin2.Lookup(name);
+                if(ParamNodeArray.GetCount() == 2)
+					return p2->m_value(ParamNodeArray[0]->data,
+						ParamNodeArray[1]->data, tree->loc);
+                else if(ParamNodeArray.GetCount() == 1)
+					return p2->m_value(ParamNodeArray[0]->data, NULL, tree->loc);
+				else if(ParamNodeArray.GetCount() > 2 && !pObject)	
+				{
+					string msg = "too many arguments to this function";
+					error(tree->loc, msg.data());
+					exit(EXIT_FAILURE);
+				}
+				else if(ParamNodeArray.GetCount() == 0 && !pObject)
+				{
+					string msg = "too few arguments to this function";
+					error(tree->loc, msg.data());
+					exit(EXIT_FAILURE);
+				}
+            }
+            
 			FUNC_PAIR2 *p2 = functions_buildin2.Lookup(name);
             FUNC_PAIR5 *p5 = functions_buildin5.Lookup(name);
             if ( p2 && p5 ) {

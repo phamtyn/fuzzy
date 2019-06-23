@@ -395,345 +395,345 @@ namespace yy {
         << yysym.location << ": ";
     switch (yytype)
     {
-            case 56: // BOOLEN
+            case 59: // BOOLEN
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.bval); }
 #line 403 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 57: // "Number type"
+      case 60: // "Number type"
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.dval); }
 #line 410 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 58: // "int type"
+      case 61: // "int type"
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.lval); }
 #line 417 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 59: // STRING
+      case 62: // STRING
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.sval); }
 #line 424 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 60: // NAME
+      case 63: // NAME
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.sval); }
 #line 431 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 61: // "String"
+      case 64: // "String"
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.sval); }
 #line 438 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 62: // "Number"
+      case 65: // "Number"
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.sval); }
 #line 445 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 63: // "bool"
+      case 66: // "bool"
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.sval); }
 #line 452 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 64: // "fuzzy"
+      case 67: // "fuzzy"
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.sval); }
 #line 459 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 65: // "int"
+      case 68: // "int"
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.sval); }
 #line 466 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 66: // "operator"
+      case 69: // "operator"
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.sval); }
 #line 473 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 67: // "ASSIGN OPERATOR"
+      case 70: // "ASSIGN OPERATOR"
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_type); }
 #line 480 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 68: // RELOP
+      case 71: // RELOP
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_type); }
 #line 487 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 69: // REDIRECT_OP
+      case 72: // REDIRECT_OP
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_type); }
 #line 494 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 72: // statements
+      case 75: // statements
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 501 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 73: // statement
+      case 76: // statement
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 508 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 74: // case_statements
+      case 77: // case_statements
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 515 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 75: // case_statement
+      case 78: // case_statement
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 522 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 76: // for_init_stmt
+      case 79: // for_init_stmt
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 529 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 77: // simple_stmt
+      case 80: // simple_stmt
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 536 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 80: // redirection
+      case 83: // redirection
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 543 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 81: // opt_simple_stmt
+      case 84: // opt_simple_stmt
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 550 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 82: // declares
+      case 85: // declares
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 557 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 83: // function_decl
+      case 86: // function_decl
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 564 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 84: // function_define
+      case 87: // function_define
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 571 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 85: // function_call
+      case 88: // function_call
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 578 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 86: // opt_param_list
+      case 89: // opt_param_list
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 585 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 87: // param_list
+      case 90: // param_list
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 592 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 88: // datatype
+      case 91: // datatype
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 599 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 89: // action
+      case 92: // action
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 606 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 90: // declare_var
+      case 93: // declare_var
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 613 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 91: // fuzzy_params
+      case 94: // fuzzy_params
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 620 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 92: // fuzzy_input
+      case 95: // fuzzy_input
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 627 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 93: // declare
+      case 96: // declare
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 634 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 94: // if_statement
+      case 97: // if_statement
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 641 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 95: // expression_list
+      case 98: // expression_list
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 648 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 96: // opt_expression_list
+      case 99: // opt_expression_list
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 655 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 97: // namescope
+      case 100: // namescope
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 662 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 98: // variable_decl
+      case 101: // variable_decl
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 669 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 99: // name
+      case 102: // name
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 676 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 100: // variable_decl_list
+      case 103: // variable_decl_list
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 683 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 101: // name_general
+      case 104: // name_general
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 690 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 102: // namespace
+      case 105: // namespace
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 697 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 103: // opt_exp
+      case 106: // opt_exp
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 704 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 104: // conditional
+      case 107: // conditional
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 711 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 105: // exp_fuzzy
+      case 108: // exp_fuzzy
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 718 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 106: // fuzzy_rule
+      case 109: // fuzzy_rule
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 725 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 107: // namespaces
+      case 110: // namespaces
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 732 "fuzzy_parser.cc" // lalr1.cc:672
         break;
 
-      case 108: // exp
+      case 111: // exp
 
-#line 146 "fuzzy_parser.yy" // lalr1.cc:672
+#line 149 "fuzzy_parser.yy" // lalr1.cc:672
         { yyoutput << (yysym.value.Node_ptr); }
 #line 739 "fuzzy_parser.cc" // lalr1.cc:672
         break;
@@ -975,7 +975,7 @@ namespace yy {
           switch (yyn)
             {
   case 2:
-#line 181 "fuzzy_parser.yy" // lalr1.cc:907
+#line 187 "fuzzy_parser.yy" // lalr1.cc:907
     {
 		  driver->root = (yystack_[0].value.Node_ptr);
 		}
@@ -983,13 +983,13 @@ namespace yy {
     break;
 
   case 3:
-#line 186 "fuzzy_parser.yy" // lalr1.cc:907
+#line 192 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = NULL; }
 #line 989 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 4:
-#line 189 "fuzzy_parser.yy" // lalr1.cc:907
+#line 195 "fuzzy_parser.yy" // lalr1.cc:907
     {
 			if((yystack_[1].value.Node_ptr) == NULL)
 				(yylhs.value.Node_ptr) = node ((yystack_[0].value.Node_ptr), Node_statements,(NODE *) NULL, yylhs.location);
@@ -1000,25 +1000,25 @@ namespace yy {
     break;
 
   case 5:
-#line 198 "fuzzy_parser.yy" // lalr1.cc:907
+#line 204 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = (yystack_[1].value.Node_ptr); }
 #line 1006 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 6:
-#line 199 "fuzzy_parser.yy" // lalr1.cc:907
+#line 205 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = node ((yystack_[0].value.Node_ptr), Node_statement,(NODE *) NULL, yylhs.location);}
 #line 1012 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 7:
-#line 201 "fuzzy_parser.yy" // lalr1.cc:907
+#line 207 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = node ((yystack_[2].value.Node_ptr), Node_K_while, (yystack_[0].value.Node_ptr), yylhs.location); }
 #line 1018 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 8:
-#line 203 "fuzzy_parser.yy" // lalr1.cc:907
+#line 209 "fuzzy_parser.yy" // lalr1.cc:907
     { 
 			NODE *init = (yystack_[6].value.Node_ptr);
 			NODE *expr = (yystack_[4].value.Node_ptr);
@@ -1034,7 +1034,7 @@ namespace yy {
     break;
 
   case 9:
-#line 215 "fuzzy_parser.yy" // lalr1.cc:907
+#line 221 "fuzzy_parser.yy" // lalr1.cc:907
     { 
 			(yylhs.value.Node_ptr) = node ((yystack_[1].value.Node_ptr), Node_switch, (yystack_[4].value.Node_ptr), yylhs.location);
 		}
@@ -1042,43 +1042,43 @@ namespace yy {
     break;
 
   case 10:
-#line 219 "fuzzy_parser.yy" // lalr1.cc:907
+#line 225 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = node ((NODE *)NULL, Node_K_break, (NODE *)NULL, yylhs.location); }
 #line 1048 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 11:
-#line 221 "fuzzy_parser.yy" // lalr1.cc:907
+#line 227 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = node ((NODE *)NULL, Node_K_continue, (NODE *)NULL, yylhs.location); }
 #line 1054 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 12:
-#line 223 "fuzzy_parser.yy" // lalr1.cc:907
+#line 229 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = node ((yystack_[2].value.Node_ptr), Node_K_exit, (NODE *)NULL, yylhs.location); }
 #line 1060 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 13:
-#line 224 "fuzzy_parser.yy" // lalr1.cc:907
+#line 230 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = (yystack_[0].value.Node_ptr); }
 #line 1066 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 14:
-#line 227 "fuzzy_parser.yy" // lalr1.cc:907
+#line 233 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = (yystack_[0].value.Node_ptr); }
 #line 1072 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 15:
-#line 229 "fuzzy_parser.yy" // lalr1.cc:907
+#line 235 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = (yystack_[1].value.Node_ptr); }
 #line 1078 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 16:
-#line 231 "fuzzy_parser.yy" // lalr1.cc:907
+#line 237 "fuzzy_parser.yy" // lalr1.cc:907
     {
 		    (yylhs.value.Node_ptr) = node ((yystack_[1].value.Node_ptr), Node_return, NULL, yylhs.location);
 		}
@@ -1086,7 +1086,7 @@ namespace yy {
     break;
 
   case 17:
-#line 235 "fuzzy_parser.yy" // lalr1.cc:907
+#line 241 "fuzzy_parser.yy" // lalr1.cc:907
     {
 		    (yylhs.value.Node_ptr) = node ((yystack_[1].value.Node_ptr), Node_system, NULL, yylhs.location);
 		}
@@ -1094,13 +1094,13 @@ namespace yy {
     break;
 
   case 18:
-#line 238 "fuzzy_parser.yy" // lalr1.cc:907
+#line 244 "fuzzy_parser.yy" // lalr1.cc:907
     {}
 #line 1100 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 19:
-#line 241 "fuzzy_parser.yy" // lalr1.cc:907
+#line 247 "fuzzy_parser.yy" // lalr1.cc:907
     {	
 			include_data data = driver->list.RemoveTail();
 			yyla.location = data.loc;
@@ -1111,7 +1111,7 @@ namespace yy {
     break;
 
   case 20:
-#line 247 "fuzzy_parser.yy" // lalr1.cc:907
+#line 253 "fuzzy_parser.yy" // lalr1.cc:907
     {	
 			string &newname = driver->filenames.GetTail();
 			yyla.location.initialize(&newname);
@@ -1121,25 +1121,25 @@ namespace yy {
     break;
 
   case 21:
-#line 253 "fuzzy_parser.yy" // lalr1.cc:907
+#line 259 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = (yystack_[1].value.Node_ptr); }
 #line 1127 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 22:
-#line 254 "fuzzy_parser.yy" // lalr1.cc:907
+#line 260 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = (yystack_[1].value.Node_ptr); }
 #line 1133 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 23:
-#line 258 "fuzzy_parser.yy" // lalr1.cc:907
+#line 264 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = NULL;	}
 #line 1139 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 24:
-#line 260 "fuzzy_parser.yy" // lalr1.cc:907
+#line 266 "fuzzy_parser.yy" // lalr1.cc:907
     { 
 			if((yystack_[1].value.Node_ptr) == NULL)
 			{
@@ -1154,7 +1154,7 @@ namespace yy {
     break;
 
   case 25:
-#line 274 "fuzzy_parser.yy" // lalr1.cc:907
+#line 280 "fuzzy_parser.yy" // lalr1.cc:907
     {
 			(yylhs.value.Node_ptr) = node ((yystack_[2].value.Node_ptr), Node_case, (yystack_[0].value.Node_ptr), yylhs.location);
 		}
@@ -1162,7 +1162,7 @@ namespace yy {
     break;
 
   case 26:
-#line 278 "fuzzy_parser.yy" // lalr1.cc:907
+#line 284 "fuzzy_parser.yy" // lalr1.cc:907
     { 
 			(yylhs.value.Node_ptr) = node (NULL, Node_default, (yystack_[0].value.Node_ptr), yylhs.location); 	
 		}
@@ -1170,31 +1170,31 @@ namespace yy {
     break;
 
   case 27:
-#line 284 "fuzzy_parser.yy" // lalr1.cc:907
+#line 290 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = (yystack_[0].value.Node_ptr);	}
 #line 1176 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 28:
-#line 285 "fuzzy_parser.yy" // lalr1.cc:907
+#line 291 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = (yystack_[0].value.Node_ptr); 	}
 #line 1182 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 29:
-#line 289 "fuzzy_parser.yy" // lalr1.cc:907
+#line 295 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = node ((yystack_[2].value.Node_ptr), (yystack_[1].value.Node_type), (yystack_[0].value.Node_ptr), yylhs.location);	}
 #line 1188 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 30:
-#line 291 "fuzzy_parser.yy" // lalr1.cc:907
+#line 297 "fuzzy_parser.yy" // lalr1.cc:907
     { driver->want_redirect = true; }
 #line 1194 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 31:
-#line 293 "fuzzy_parser.yy" // lalr1.cc:907
+#line 299 "fuzzy_parser.yy" // lalr1.cc:907
     {
 			driver->want_redirect = false;
 			(yylhs.value.Node_ptr) = node ((yystack_[1].value.Node_ptr), Node_K_print, (yystack_[0].value.Node_ptr), yylhs.location); 	
@@ -1203,13 +1203,13 @@ namespace yy {
     break;
 
   case 32:
-#line 298 "fuzzy_parser.yy" // lalr1.cc:907
+#line 304 "fuzzy_parser.yy" // lalr1.cc:907
     { driver->want_redirect = true; }
 #line 1209 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 33:
-#line 300 "fuzzy_parser.yy" // lalr1.cc:907
+#line 306 "fuzzy_parser.yy" // lalr1.cc:907
     {
 			driver->want_redirect = false;
 			(yylhs.value.Node_ptr) = node ((yystack_[1].value.Node_ptr), Node_print_set, (yystack_[0].value.Node_ptr), yylhs.location); 	
@@ -1218,7 +1218,7 @@ namespace yy {
     break;
 
   case 34:
-#line 305 "fuzzy_parser.yy" // lalr1.cc:907
+#line 311 "fuzzy_parser.yy" // lalr1.cc:907
     { 
 			NODE *one = node ((long)1, yystack_[0].location);
 			(yylhs.value.Node_ptr) = node ((yystack_[1].value.Node_ptr), Node_assign_plus, one, yylhs.location);
@@ -1227,7 +1227,7 @@ namespace yy {
     break;
 
   case 35:
-#line 310 "fuzzy_parser.yy" // lalr1.cc:907
+#line 316 "fuzzy_parser.yy" // lalr1.cc:907
     { 
 			NODE *one = node ((long)1, yystack_[0].location);
 			(yylhs.value.Node_ptr) = node ((yystack_[1].value.Node_ptr), Node_assign_minus, one, yylhs.location);
@@ -1236,13 +1236,13 @@ namespace yy {
     break;
 
   case 36:
-#line 317 "fuzzy_parser.yy" // lalr1.cc:907
+#line 323 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = NULL;	}
 #line 1242 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 37:
-#line 319 "fuzzy_parser.yy" // lalr1.cc:907
+#line 325 "fuzzy_parser.yy" // lalr1.cc:907
     {
 			NODE *filename = node ((yystack_[0].value.sval), yystack_[0].location);
 			(yylhs.value.Node_ptr) = node (filename, (yystack_[1].value.Node_type), NULL, yylhs.location); 	
@@ -1251,25 +1251,25 @@ namespace yy {
     break;
 
   case 38:
-#line 326 "fuzzy_parser.yy" // lalr1.cc:907
+#line 332 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = NULL;	}
 #line 1257 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 39:
-#line 327 "fuzzy_parser.yy" // lalr1.cc:907
+#line 333 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = (yystack_[0].value.Node_ptr); 	}
 #line 1263 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 40:
-#line 331 "fuzzy_parser.yy" // lalr1.cc:907
+#line 337 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = NULL;	}
 #line 1269 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 41:
-#line 333 "fuzzy_parser.yy" // lalr1.cc:907
+#line 339 "fuzzy_parser.yy" // lalr1.cc:907
     {
 			if((yystack_[1].value.Node_ptr) == NULL)
 				(yylhs.value.Node_ptr) = node ((yystack_[0].value.Node_ptr), Node_illegal, (NODE *) NULL, yylhs.location);
@@ -1280,7 +1280,7 @@ namespace yy {
     break;
 
   case 42:
-#line 343 "fuzzy_parser.yy" // lalr1.cc:907
+#line 349 "fuzzy_parser.yy" // lalr1.cc:907
     {
 		NODE *func_name = node((yystack_[3].value.sval), yystack_[3].location);
 		NODE *type = node(NULL, Node_type_void, NULL, yystack_[4].location);
@@ -1292,7 +1292,7 @@ namespace yy {
     break;
 
   case 43:
-#line 351 "fuzzy_parser.yy" // lalr1.cc:907
+#line 357 "fuzzy_parser.yy" // lalr1.cc:907
     {
 		NODE *func_name = node((yystack_[3].value.sval), yystack_[3].location);
 		NODE *type_name = node((yystack_[4].value.Node_ptr), (yystack_[4].value.Node_ptr)->type, func_name, yystack_[4].location + yystack_[3].location);
@@ -1303,7 +1303,7 @@ namespace yy {
     break;
 
   case 44:
-#line 358 "fuzzy_parser.yy" // lalr1.cc:907
+#line 364 "fuzzy_parser.yy" // lalr1.cc:907
     {
 		NODE *func_name = node((yystack_[5].value.sval), yystack_[5].location);
 		NODE *type_name = node((yystack_[6].value.Node_ptr), (yystack_[6].value.Node_ptr)->type, func_name, yystack_[6].location + yystack_[5].location);
@@ -1315,7 +1315,7 @@ namespace yy {
     break;
 
   case 45:
-#line 366 "fuzzy_parser.yy" // lalr1.cc:907
+#line 372 "fuzzy_parser.yy" // lalr1.cc:907
     {
 		NODE *func_name = node((yystack_[5].value.sval), yystack_[5].location);
 		NODE *type = node(NULL, Node_type_void, NULL, yystack_[6].location);
@@ -1328,7 +1328,7 @@ namespace yy {
     break;
 
   case 46:
-#line 375 "fuzzy_parser.yy" // lalr1.cc:907
+#line 381 "fuzzy_parser.yy" // lalr1.cc:907
     {
 		NODE *func_name = node((yystack_[3].value.sval), yystack_[3].location);
 		NODE *type_name = node((yystack_[4].value.Node_ptr), (yystack_[4].value.Node_ptr)->type, func_name, yystack_[4].location + yystack_[3].location);
@@ -1339,7 +1339,7 @@ namespace yy {
     break;
 
   case 47:
-#line 385 "fuzzy_parser.yy" // lalr1.cc:907
+#line 391 "fuzzy_parser.yy" // lalr1.cc:907
     {
 		(yylhs.value.Node_ptr) = node((yystack_[1].value.Node_ptr), Node_function_define, (yystack_[0].value.Node_ptr), yylhs.location);
 	  }
@@ -1347,7 +1347,7 @@ namespace yy {
     break;
 
   case 48:
-#line 392 "fuzzy_parser.yy" // lalr1.cc:907
+#line 398 "fuzzy_parser.yy" // lalr1.cc:907
     {
 		NODE *namenode = node ((yystack_[3].value.sval), yystack_[3].location);
 		//namenode = node (namenode, Node_illegal, NULL, @1);
@@ -1359,19 +1359,19 @@ namespace yy {
     break;
 
   case 49:
-#line 402 "fuzzy_parser.yy" // lalr1.cc:907
+#line 408 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = NULL; }
 #line 1365 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 50:
-#line 403 "fuzzy_parser.yy" // lalr1.cc:907
+#line 409 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = (yystack_[0].value.Node_ptr); }
 #line 1371 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 51:
-#line 408 "fuzzy_parser.yy" // lalr1.cc:907
+#line 414 "fuzzy_parser.yy" // lalr1.cc:907
     { 
 		    (yylhs.value.Node_ptr) = node (node((yystack_[1].value.Node_ptr), (yystack_[1].value.Node_ptr)->type, (yystack_[0].value.Node_ptr), yylhs.location), Node_argument, NULL, yylhs.location);
 		}
@@ -1379,7 +1379,7 @@ namespace yy {
     break;
 
   case 52:
-#line 412 "fuzzy_parser.yy" // lalr1.cc:907
+#line 418 "fuzzy_parser.yy" // lalr1.cc:907
     {
 		    (yylhs.value.Node_ptr) = append_right((yystack_[3].value.Node_ptr), node(node((yystack_[1].value.Node_ptr), (yystack_[1].value.Node_ptr)->type, (yystack_[0].value.Node_ptr), yystack_[1].location + yystack_[0].location),
 				Node_argument, NULL, yylhs.location));
@@ -1388,13 +1388,13 @@ namespace yy {
     break;
 
   case 53:
-#line 419 "fuzzy_parser.yy" // lalr1.cc:907
+#line 425 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = (yystack_[0].value.Node_ptr); }
 #line 1394 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 54:
-#line 421 "fuzzy_parser.yy" // lalr1.cc:907
+#line 427 "fuzzy_parser.yy" // lalr1.cc:907
     {
 		    (yylhs.value.Node_ptr) = node (node ((yystack_[0].value.sval), yystack_[0].location), Node_type_number, NULL, yylhs.location);
 		}
@@ -1402,7 +1402,7 @@ namespace yy {
     break;
 
   case 55:
-#line 425 "fuzzy_parser.yy" // lalr1.cc:907
+#line 431 "fuzzy_parser.yy" // lalr1.cc:907
     {
 		    (yylhs.value.Node_ptr) = node (node ((yystack_[0].value.sval), yystack_[0].location), Node_type_interger, NULL, yylhs.location);
 		}
@@ -1410,7 +1410,7 @@ namespace yy {
     break;
 
   case 56:
-#line 429 "fuzzy_parser.yy" // lalr1.cc:907
+#line 435 "fuzzy_parser.yy" // lalr1.cc:907
     {
 		    (yylhs.value.Node_ptr) = node (node ((yystack_[0].value.sval), yystack_[0].location), Node_type_string, NULL, yylhs.location);
 		}
@@ -1418,7 +1418,7 @@ namespace yy {
     break;
 
   case 57:
-#line 433 "fuzzy_parser.yy" // lalr1.cc:907
+#line 439 "fuzzy_parser.yy" // lalr1.cc:907
     {
 		    (yylhs.value.Node_ptr) = node (node ((yystack_[0].value.sval), yystack_[0].location), Node_type_bool, NULL, yylhs.location);
 		}
@@ -1426,7 +1426,7 @@ namespace yy {
     break;
 
   case 58:
-#line 437 "fuzzy_parser.yy" // lalr1.cc:907
+#line 443 "fuzzy_parser.yy" // lalr1.cc:907
     {
 		    (yylhs.value.Node_ptr) = node (node ((yystack_[0].value.sval), yystack_[0].location), Node_type_fuzzy, NULL, yylhs.location);
 		}
@@ -1434,7 +1434,7 @@ namespace yy {
     break;
 
   case 59:
-#line 444 "fuzzy_parser.yy" // lalr1.cc:907
+#line 450 "fuzzy_parser.yy" // lalr1.cc:907
     { 
 			(yylhs.value.Node_ptr) = (yystack_[1].value.Node_ptr);
 			if((yylhs.value.Node_ptr) != NULL)
@@ -1446,7 +1446,7 @@ namespace yy {
     break;
 
   case 60:
-#line 455 "fuzzy_parser.yy" // lalr1.cc:907
+#line 461 "fuzzy_parser.yy" // lalr1.cc:907
     {   
 		    (yylhs.value.Node_ptr) = node ((yystack_[1].value.Node_ptr), Node_var_decl, (yystack_[0].value.Node_ptr), yylhs.location);
 		}
@@ -1454,7 +1454,7 @@ namespace yy {
     break;
 
   case 61:
-#line 462 "fuzzy_parser.yy" // lalr1.cc:907
+#line 468 "fuzzy_parser.yy" // lalr1.cc:907
     {
 			NODE *param = node ((yystack_[2].value.Node_ptr), Node_illegal, (yystack_[0].value.Node_ptr), yylhs.location);
 			(yylhs.value.Node_ptr) = node (param, Node_illegal, NULL, yylhs.location);
@@ -1463,7 +1463,7 @@ namespace yy {
     break;
 
   case 62:
-#line 467 "fuzzy_parser.yy" // lalr1.cc:907
+#line 473 "fuzzy_parser.yy" // lalr1.cc:907
     {
 			NODE *param = node ((yystack_[2].value.Node_ptr), Node_illegal, (yystack_[0].value.Node_ptr), yystack_[2].location + yystack_[0].location);
 			(yylhs.value.Node_ptr) = append_right((yystack_[4].value.Node_ptr), node (param, Node_illegal, NULL, yystack_[2].location + yystack_[0].location));
@@ -1473,7 +1473,7 @@ namespace yy {
     break;
 
   case 63:
-#line 476 "fuzzy_parser.yy" // lalr1.cc:907
+#line 482 "fuzzy_parser.yy" // lalr1.cc:907
     {
 			(yylhs.value.Node_ptr) = node ((yystack_[4].value.Node_ptr), Node_fuzzy_input, (yystack_[1].value.Node_ptr), yylhs.location);
 		}
@@ -1481,7 +1481,7 @@ namespace yy {
     break;
 
   case 64:
-#line 483 "fuzzy_parser.yy" // lalr1.cc:907
+#line 489 "fuzzy_parser.yy" // lalr1.cc:907
     {   
 		    (yylhs.value.Node_ptr) = (yystack_[1].value.Node_ptr);
 		}
@@ -1489,7 +1489,7 @@ namespace yy {
     break;
 
   case 65:
-#line 487 "fuzzy_parser.yy" // lalr1.cc:907
+#line 493 "fuzzy_parser.yy" // lalr1.cc:907
     {
 		    NODE *name = node ((yystack_[4].value.sval), yystack_[4].location);
 		    (yylhs.value.Node_ptr) = node (name, Node_var_decl_fuzzy_discrete, (yystack_[2].value.Node_ptr), yylhs.location);
@@ -1498,7 +1498,7 @@ namespace yy {
     break;
 
   case 66:
-#line 492 "fuzzy_parser.yy" // lalr1.cc:907
+#line 498 "fuzzy_parser.yy" // lalr1.cc:907
     {
 		    (yylhs.value.Node_ptr) = node (node ((yystack_[4].value.sval), yystack_[4].location), Node_type_struct_declare, (yystack_[2].value.Node_ptr), yylhs.location);
 		}
@@ -1506,19 +1506,21 @@ namespace yy {
     break;
 
   case 67:
-#line 496 "fuzzy_parser.yy" // lalr1.cc:907
+#line 502 "fuzzy_parser.yy" // lalr1.cc:907
     {
-		    NODE *name = node ((yystack_[9].value.sval), yystack_[9].location);
-		    NODE *min_max = node ((yystack_[7].value.Node_ptr), Node_illegal, (yystack_[5].value.Node_ptr), yystack_[7].location + yystack_[5].location);
-		    NODE *header = node (name, Node_illegal, min_max, yystack_[9].location + yystack_[4].location);
+		    NODE *name = node ((yystack_[11].value.sval), yystack_[11].location);
+		    NODE *min_max = node ((yystack_[9].value.Node_ptr), Node_illegal, (yystack_[7].value.Node_ptr), yystack_[9].location + yystack_[7].location);
+		    NODE *size = node ((yystack_[5].value.lval), yystack_[5].location);
+		    NODE *params = node (min_max, Node_illegal, size, yystack_[9].location + yystack_[5].location);
+		    NODE *header = node (name, Node_illegal, params, yystack_[11].location + yystack_[4].location);
 		    NODE *body = (yystack_[2].value.Node_ptr);
 		    (yylhs.value.Node_ptr) = node (header, Node_type_struct_declare_fuzzy, body, yylhs.location);
 		}
-#line 1518 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1520 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 68:
-#line 504 "fuzzy_parser.yy" // lalr1.cc:907
+#line 512 "fuzzy_parser.yy" // lalr1.cc:907
     {
 		    NODE *name = node ((yystack_[7].value.sval), yystack_[7].location);
 		    NODE *size = node ((yystack_[5].value.lval), yystack_[5].location);
@@ -1526,261 +1528,279 @@ namespace yy {
 		    NODE *body = (yystack_[2].value.Node_ptr);
 		    (yylhs.value.Node_ptr) = node (header, Node_type_struct_declare_fuzzy_discrete, body, yylhs.location);
 		}
-#line 1530 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1532 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 69:
-#line 512 "fuzzy_parser.yy" // lalr1.cc:907
+#line 520 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = (yystack_[0].value.Node_ptr); }
-#line 1536 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1538 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 70:
-#line 517 "fuzzy_parser.yy" // lalr1.cc:907
+#line 525 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = node ((yystack_[2].value.Node_ptr), Node_K_if,
 				node ((yystack_[0].value.Node_ptr), Node_if_branches, (NODE *)NULL, yystack_[0].location), yylhs.location); 
 		}
-#line 1544 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1546 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 71:
-#line 521 "fuzzy_parser.yy" // lalr1.cc:907
+#line 529 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = node ((yystack_[4].value.Node_ptr), Node_K_if,
 				node ((yystack_[2].value.Node_ptr), Node_if_branches, (yystack_[0].value.Node_ptr), yystack_[1].location + yystack_[0].location), yylhs.location); 
 		}
-#line 1552 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1554 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 72:
-#line 527 "fuzzy_parser.yy" // lalr1.cc:907
+#line 535 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = node ((yystack_[0].value.Node_ptr), Node_expression_list, (NODE *)NULL, yylhs.location); }
-#line 1558 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1560 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 73:
-#line 529 "fuzzy_parser.yy" // lalr1.cc:907
+#line 537 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = append_right((yystack_[2].value.Node_ptr), node( (yystack_[0].value.Node_ptr), Node_expression_list, (NODE *)NULL, yystack_[0].location)); }
-#line 1564 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1566 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 74:
-#line 531 "fuzzy_parser.yy" // lalr1.cc:907
+#line 539 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = append_right((yystack_[3].value.Node_ptr), node( (yystack_[1].value.Node_ptr), Node_expression_list, (NODE *)NULL, yystack_[1].location)); }
-#line 1570 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1572 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 75:
-#line 535 "fuzzy_parser.yy" // lalr1.cc:907
+#line 543 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = NULL; }
-#line 1576 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1578 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 76:
-#line 536 "fuzzy_parser.yy" // lalr1.cc:907
+#line 544 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = (yystack_[0].value.Node_ptr); }
-#line 1582 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1584 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 77:
-#line 540 "fuzzy_parser.yy" // lalr1.cc:907
+#line 548 "fuzzy_parser.yy" // lalr1.cc:907
     { 	(yylhs.value.Node_ptr) = node (node ((yystack_[0].value.sval), yystack_[0].location), Node_type_var, (NODE *)NULL, yylhs.location);	}
-#line 1588 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1590 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 78:
-#line 542 "fuzzy_parser.yy" // lalr1.cc:907
+#line 550 "fuzzy_parser.yy" // lalr1.cc:907
     { 	
 			(yylhs.value.Node_ptr) = node (node ((yystack_[0].value.sval), yystack_[0].location), Node_type_var_rootpath,
 			(NODE *)NULL, yylhs.location);	
 		  }
-#line 1597 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1599 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 79:
-#line 547 "fuzzy_parser.yy" // lalr1.cc:907
+#line 555 "fuzzy_parser.yy" // lalr1.cc:907
     {
 			(yylhs.value.Node_ptr) = append_right((yystack_[2].value.Node_ptr), node( node ((yystack_[0].value.sval), yystack_[0].location),
 				Node_illegal, (NODE *)NULL, yystack_[0].location));
 		  }
-#line 1606 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1608 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 80:
-#line 554 "fuzzy_parser.yy" // lalr1.cc:907
+#line 562 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = node (node ((yystack_[2].value.sval), yystack_[2].location), Node_assign, (yystack_[0].value.Node_ptr), yylhs.location);	}
-#line 1612 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1614 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 81:
-#line 555 "fuzzy_parser.yy" // lalr1.cc:907
+#line 563 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = (yystack_[0].value.Node_ptr); }
-#line 1618 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1620 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 82:
-#line 559 "fuzzy_parser.yy" // lalr1.cc:907
+#line 567 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = node ((yystack_[0].value.sval), yylhs.location);	(yylhs.value.Node_ptr)->type = Node_name; }
-#line 1624 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1626 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 83:
-#line 560 "fuzzy_parser.yy" // lalr1.cc:907
+#line 568 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = node (node ((yystack_[3].value.sval), yystack_[3].location), Node_array, (yystack_[1].value.Node_ptr), yylhs.location);	}
-#line 1630 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1632 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 84:
-#line 564 "fuzzy_parser.yy" // lalr1.cc:907
+#line 572 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = node ((yystack_[0].value.Node_ptr), Node_illegal, NULL, yylhs.location);	}
-#line 1636 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1638 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 85:
-#line 566 "fuzzy_parser.yy" // lalr1.cc:907
+#line 574 "fuzzy_parser.yy" // lalr1.cc:907
     {
 			(yylhs.value.Node_ptr) = append_right((yystack_[2].value.Node_ptr), node ((yystack_[0].value.Node_ptr), Node_illegal, NULL, yystack_[0].location));
 			(yylhs.value.Node_ptr)->loc = yylhs.location;
 		  }
-#line 1645 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1647 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 86:
-#line 573 "fuzzy_parser.yy" // lalr1.cc:907
+#line 581 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = (yystack_[0].value.Node_ptr); }
-#line 1651 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1653 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 87:
-#line 574 "fuzzy_parser.yy" // lalr1.cc:907
+#line 582 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = (yystack_[0].value.Node_ptr); }
-#line 1657 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1659 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 88:
-#line 578 "fuzzy_parser.yy" // lalr1.cc:907
+#line 586 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = node ((yystack_[0].value.Node_ptr), Node_namespace, NULL, yylhs.location);	}
-#line 1663 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1665 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 89:
-#line 580 "fuzzy_parser.yy" // lalr1.cc:907
+#line 588 "fuzzy_parser.yy" // lalr1.cc:907
     {
 			(yylhs.value.Node_ptr) = append_right((yystack_[2].value.Node_ptr), node ((yystack_[0].value.Node_ptr), Node_namespace, NULL, yystack_[0].location));
 			(yylhs.value.Node_ptr)->loc = yylhs.location;
 		  }
-#line 1672 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1674 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 90:
-#line 588 "fuzzy_parser.yy" // lalr1.cc:907
+#line 596 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = NULL; }
-#line 1678 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1680 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 91:
-#line 590 "fuzzy_parser.yy" // lalr1.cc:907
+#line 598 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = (yystack_[0].value.Node_ptr); }
-#line 1684 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1686 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 92:
-#line 594 "fuzzy_parser.yy" // lalr1.cc:907
+#line 602 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = node ((yystack_[0].value.Node_ptr), Node_not, NULL, yylhs.location);	}
-#line 1690 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1692 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 93:
-#line 597 "fuzzy_parser.yy" // lalr1.cc:907
+#line 605 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = node ((yystack_[2].value.Node_ptr), (yystack_[1].value.Node_type), (yystack_[0].value.Node_ptr), yylhs.location);		}
-#line 1696 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1698 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 94:
-#line 599 "fuzzy_parser.yy" // lalr1.cc:907
+#line 607 "fuzzy_parser.yy" // lalr1.cc:907
     {
 			(yylhs.value.Node_ptr) = node ((yystack_[2].value.Node_ptr), Node_and, (yystack_[0].value.Node_ptr), yylhs.location);	
 		}
-#line 1704 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1706 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 95:
-#line 603 "fuzzy_parser.yy" // lalr1.cc:907
+#line 611 "fuzzy_parser.yy" // lalr1.cc:907
     {
 			(yylhs.value.Node_ptr) = node ((yystack_[2].value.Node_ptr), Node_or, (yystack_[0].value.Node_ptr), yylhs.location);	
 		}
-#line 1712 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1714 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 96:
-#line 609 "fuzzy_parser.yy" // lalr1.cc:907
+#line 617 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = (yystack_[0].value.Node_ptr);					}
-#line 1718 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1720 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 97:
-#line 610 "fuzzy_parser.yy" // lalr1.cc:907
+#line 618 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = node ((yystack_[2].value.Node_ptr), Node_or, (yystack_[0].value.Node_ptr), yylhs.location); 		}
-#line 1724 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1726 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 98:
-#line 611 "fuzzy_parser.yy" // lalr1.cc:907
+#line 619 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = node ((yystack_[2].value.Node_ptr), Node_and, (yystack_[0].value.Node_ptr), yylhs.location); 		}
-#line 1730 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1732 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 99:
-#line 612 "fuzzy_parser.yy" // lalr1.cc:907
+#line 620 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = node ((yystack_[0].value.Node_ptr), Node_really, NULL, yylhs.location);	}
-#line 1736 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1738 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 100:
-#line 613 "fuzzy_parser.yy" // lalr1.cc:907
+#line 621 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = node ((yystack_[0].value.Node_ptr), Node_little, NULL, yylhs.location);	}
-#line 1742 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1744 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 101:
-#line 614 "fuzzy_parser.yy" // lalr1.cc:907
+#line 622 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = node ((yystack_[0].value.Node_ptr), Node_very, NULL, yylhs.location);		}
-#line 1748 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1750 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 102:
-#line 615 "fuzzy_parser.yy" // lalr1.cc:907
-    { (yylhs.value.Node_ptr) = node ((yystack_[0].value.Node_ptr), Node_not, NULL, yylhs.location);		}
-#line 1754 "fuzzy_parser.cc" // lalr1.cc:907
+#line 623 "fuzzy_parser.yy" // lalr1.cc:907
+    { (yylhs.value.Node_ptr) = node ((yystack_[0].value.Node_ptr), Node_extremely, NULL, yylhs.location);		}
+#line 1756 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 103:
-#line 616 "fuzzy_parser.yy" // lalr1.cc:907
-    { (yylhs.value.Node_ptr) = (yystack_[1].value.Node_ptr); (yylhs.value.Node_ptr)->loc = yylhs.location;			}
-#line 1760 "fuzzy_parser.cc" // lalr1.cc:907
+#line 624 "fuzzy_parser.yy" // lalr1.cc:907
+    { (yylhs.value.Node_ptr) = node ((yystack_[0].value.Node_ptr), Node_seemed, NULL, yylhs.location);		}
+#line 1762 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 104:
-#line 621 "fuzzy_parser.yy" // lalr1.cc:907
-    {
-			{ (yylhs.value.Node_ptr) = node ((yystack_[2].value.Node_ptr), Node_fuzzy_rule, (yystack_[0].value.Node_ptr), yylhs.location); 	}
-		}
+#line 625 "fuzzy_parser.yy" // lalr1.cc:907
+    { (yylhs.value.Node_ptr) = node ((yystack_[0].value.Node_ptr), Node_bit, NULL, yylhs.location);		}
 #line 1768 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 105:
-#line 627 "fuzzy_parser.yy" // lalr1.cc:907
-    { (yylhs.value.Node_ptr) = node ((yystack_[2].value.Node_ptr), (yystack_[1].value.Node_type), (yystack_[0].value.Node_ptr), yylhs.location);	}
+#line 626 "fuzzy_parser.yy" // lalr1.cc:907
+    { (yylhs.value.Node_ptr) = node ((yystack_[0].value.Node_ptr), Node_not, NULL, yylhs.location);		}
 #line 1774 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 106:
-#line 628 "fuzzy_parser.yy" // lalr1.cc:907
-    { (yylhs.value.Node_ptr) = (yystack_[0].value.Node_ptr);			}
+#line 627 "fuzzy_parser.yy" // lalr1.cc:907
+    { (yylhs.value.Node_ptr) = (yystack_[1].value.Node_ptr); (yylhs.value.Node_ptr)->loc = yylhs.location;			}
 #line 1780 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 107:
 #line 632 "fuzzy_parser.yy" // lalr1.cc:907
+    {
+			{ (yylhs.value.Node_ptr) = node ((yystack_[2].value.Node_ptr), Node_fuzzy_rule, (yystack_[0].value.Node_ptr), yylhs.location); 	}
+		}
+#line 1788 "fuzzy_parser.cc" // lalr1.cc:907
+    break;
+
+  case 108:
+#line 638 "fuzzy_parser.yy" // lalr1.cc:907
+    { (yylhs.value.Node_ptr) = node ((yystack_[2].value.Node_ptr), (yystack_[1].value.Node_type), (yystack_[0].value.Node_ptr), yylhs.location);	}
+#line 1794 "fuzzy_parser.cc" // lalr1.cc:907
+    break;
+
+  case 109:
+#line 639 "fuzzy_parser.yy" // lalr1.cc:907
+    { (yylhs.value.Node_ptr) = (yystack_[0].value.Node_ptr);			}
+#line 1800 "fuzzy_parser.cc" // lalr1.cc:907
+    break;
+
+  case 110:
+#line 643 "fuzzy_parser.yy" // lalr1.cc:907
     { 
 		  if((yystack_[0].value.dval) == HUGE_VALF)
 		  {
@@ -1789,83 +1809,83 @@ namespace yy {
 		  }
 		  (yylhs.value.Node_ptr) = node ((yystack_[0].value.dval), yylhs.location);
 		}
-#line 1793 "fuzzy_parser.cc" // lalr1.cc:907
-    break;
-
-  case 108:
-#line 640 "fuzzy_parser.yy" // lalr1.cc:907
-    { (yylhs.value.Node_ptr) = node ((yystack_[0].value.lval), yylhs.location);		}
-#line 1799 "fuzzy_parser.cc" // lalr1.cc:907
-    break;
-
-  case 109:
-#line 641 "fuzzy_parser.yy" // lalr1.cc:907
-    { (yylhs.value.Node_ptr) = node ((yystack_[0].value.sval), yylhs.location);		}
-#line 1805 "fuzzy_parser.cc" // lalr1.cc:907
-    break;
-
-  case 110:
-#line 642 "fuzzy_parser.yy" // lalr1.cc:907
-    { (yylhs.value.Node_ptr) = node ((yystack_[0].value.bval), yylhs.location);		}
-#line 1811 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1813 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 111:
-#line 643 "fuzzy_parser.yy" // lalr1.cc:907
-    { (yylhs.value.Node_ptr) = (yystack_[0].value.Node_ptr);			}
-#line 1817 "fuzzy_parser.cc" // lalr1.cc:907
+#line 651 "fuzzy_parser.yy" // lalr1.cc:907
+    { (yylhs.value.Node_ptr) = node ((yystack_[0].value.lval), yylhs.location);		}
+#line 1819 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 112:
-#line 644 "fuzzy_parser.yy" // lalr1.cc:907
-    { (yylhs.value.Node_ptr) = (yystack_[0].value.Node_ptr);			}
-#line 1823 "fuzzy_parser.cc" // lalr1.cc:907
+#line 652 "fuzzy_parser.yy" // lalr1.cc:907
+    { (yylhs.value.Node_ptr) = node ((yystack_[0].value.sval), yylhs.location);		}
+#line 1825 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 113:
-#line 645 "fuzzy_parser.yy" // lalr1.cc:907
-    { (yylhs.value.Node_ptr) = node ((yystack_[2].value.Node_ptr), Node_plus, (yystack_[0].value.Node_ptr), yylhs.location); 			}
-#line 1829 "fuzzy_parser.cc" // lalr1.cc:907
+#line 653 "fuzzy_parser.yy" // lalr1.cc:907
+    { (yylhs.value.Node_ptr) = node ((yystack_[0].value.bval), yylhs.location);		}
+#line 1831 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 114:
-#line 646 "fuzzy_parser.yy" // lalr1.cc:907
-    { (yylhs.value.Node_ptr) = node ((yystack_[2].value.Node_ptr), Node_minus, (yystack_[0].value.Node_ptr), yylhs.location); 			}
-#line 1835 "fuzzy_parser.cc" // lalr1.cc:907
+#line 654 "fuzzy_parser.yy" // lalr1.cc:907
+    { (yylhs.value.Node_ptr) = (yystack_[0].value.Node_ptr);			}
+#line 1837 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 115:
-#line 647 "fuzzy_parser.yy" // lalr1.cc:907
-    { (yylhs.value.Node_ptr) = node ((yystack_[2].value.Node_ptr), Node_multive, (yystack_[0].value.Node_ptr), yylhs.location); 		}
-#line 1841 "fuzzy_parser.cc" // lalr1.cc:907
+#line 655 "fuzzy_parser.yy" // lalr1.cc:907
+    { (yylhs.value.Node_ptr) = (yystack_[0].value.Node_ptr);			}
+#line 1843 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 116:
-#line 648 "fuzzy_parser.yy" // lalr1.cc:907
-    { (yylhs.value.Node_ptr) = node ((yystack_[2].value.Node_ptr), Node_quotient, (yystack_[0].value.Node_ptr), yylhs.location); 		}
-#line 1847 "fuzzy_parser.cc" // lalr1.cc:907
+#line 656 "fuzzy_parser.yy" // lalr1.cc:907
+    { (yylhs.value.Node_ptr) = node ((yystack_[2].value.Node_ptr), Node_plus, (yystack_[0].value.Node_ptr), yylhs.location); 			}
+#line 1849 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 117:
-#line 649 "fuzzy_parser.yy" // lalr1.cc:907
-    { (yylhs.value.Node_ptr) = node ((yystack_[2].value.Node_ptr), Node_mod, (yystack_[0].value.Node_ptr), yylhs.location); 		}
-#line 1853 "fuzzy_parser.cc" // lalr1.cc:907
+#line 657 "fuzzy_parser.yy" // lalr1.cc:907
+    { (yylhs.value.Node_ptr) = node ((yystack_[2].value.Node_ptr), Node_minus, (yystack_[0].value.Node_ptr), yylhs.location); 			}
+#line 1855 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 118:
-#line 650 "fuzzy_parser.yy" // lalr1.cc:907
-    { (yylhs.value.Node_ptr) = node ((yystack_[0].value.Node_ptr), Node_unary_minus, (NODE *)NULL, yylhs.location); 	}
-#line 1859 "fuzzy_parser.cc" // lalr1.cc:907
+#line 658 "fuzzy_parser.yy" // lalr1.cc:907
+    { (yylhs.value.Node_ptr) = node ((yystack_[2].value.Node_ptr), Node_multive, (yystack_[0].value.Node_ptr), yylhs.location); 		}
+#line 1861 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
   case 119:
-#line 651 "fuzzy_parser.yy" // lalr1.cc:907
+#line 659 "fuzzy_parser.yy" // lalr1.cc:907
+    { (yylhs.value.Node_ptr) = node ((yystack_[2].value.Node_ptr), Node_quotient, (yystack_[0].value.Node_ptr), yylhs.location); 		}
+#line 1867 "fuzzy_parser.cc" // lalr1.cc:907
+    break;
+
+  case 120:
+#line 660 "fuzzy_parser.yy" // lalr1.cc:907
+    { (yylhs.value.Node_ptr) = node ((yystack_[2].value.Node_ptr), Node_mod, (yystack_[0].value.Node_ptr), yylhs.location); 		}
+#line 1873 "fuzzy_parser.cc" // lalr1.cc:907
+    break;
+
+  case 121:
+#line 661 "fuzzy_parser.yy" // lalr1.cc:907
+    { (yylhs.value.Node_ptr) = node ((yystack_[0].value.Node_ptr), Node_unary_minus, (NODE *)NULL, yylhs.location); 	}
+#line 1879 "fuzzy_parser.cc" // lalr1.cc:907
+    break;
+
+  case 122:
+#line 662 "fuzzy_parser.yy" // lalr1.cc:907
     { (yylhs.value.Node_ptr) = (yystack_[1].value.Node_ptr); (yylhs.value.Node_ptr)->loc = yylhs.location;                     		   	}
-#line 1865 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1885 "fuzzy_parser.cc" // lalr1.cc:907
     break;
 
 
-#line 1869 "fuzzy_parser.cc" // lalr1.cc:907
+#line 1889 "fuzzy_parser.cc" // lalr1.cc:907
             default:
               break;
             }
@@ -2123,40 +2143,41 @@ namespace yy {
   }
 
 
-  const short fuzzy_parser::yypact_ninf_ = -188;
+  const short fuzzy_parser::yypact_ninf_ = -218;
 
   const signed char fuzzy_parser::yytable_ninf_ = -78;
 
   const short
   fuzzy_parser::yypact_[] =
   {
-    -188,    10,   453,  -188,  -188,     1,    70,    61,    63,  -188,
-      79,    88,  -188,    94,   121,  -188,  -188,   -21,    87,   104,
-     150,   121,    99,  -188,    36,   336,  -188,  -188,  -188,   128,
-    -188,  -188,   151,   163,  -188,  -188,   -14,  -188,   176,   192,
-    -188,  -188,   182,  -188,  -188,   232,   194,   132,   121,   121,
-    -188,  -188,   400,   208,   218,  -188,   121,   121,   121,  -188,
-    -188,  -188,  -188,    35,   -16,   222,  -188,  -188,   306,   240,
-     185,   121,   390,   121,    30,   126,   132,    36,    36,    36,
-      36,    36,    83,  -188,   132,   121,   181,  -188,  -188,    64,
-       2,  -188,  -188,   245,  -188,  -188,   200,  -188,    99,  -188,
-    -188,   121,  -188,   132,    -1,   306,   102,   140,  -188,  -188,
-     352,  -188,   162,  -188,   121,  -188,   121,   121,   121,   121,
-     121,   121,   121,   121,   443,   251,   207,  -188,   239,  -188,
-    -188,   217,  -188,     8,   215,  -188,   259,    -1,   106,  -188,
-    -188,  -188,  -188,    99,    36,    36,   264,   269,   233,   272,
-     443,   121,   273,   274,   217,  -188,  -188,   306,   277,   162,
-     121,   237,  -188,   453,   453,   499,   289,   267,  -188,   306,
-     226,   226,  -188,  -188,  -188,    24,    19,   199,  -188,   291,
-     302,   255,   443,   307,   121,     9,   312,   121,  -188,  -188,
-     308,  -188,   283,  -188,  -188,   121,   325,   306,   329,   443,
-    -188,   121,   306,  -188,   324,  -188,   317,  -188,   326,   121,
-    -188,   443,   318,  -188,   255,  -188,   323,  -188,   174,   315,
-     184,  -188,  -188,   255,   281,   453,  -188,  -188,   288,   255,
-     339,    34,    59,  -188,   121,   121,   330,   343,  -188,  -188,
-     506,   335,  -188,  -188,   350,  -188,   121,   320,  -188,   322,
-     216,  -188,  -188,   340,  -188,   453,   301,  -188,   121,  -188,
-     513,  -188,  -188,   453,   235,   341,   453,  -188
+    -218,    10,   447,  -218,  -218,    -6,     7,    24,    71,  -218,
+      37,    45,  -218,    53,   326,  -218,  -218,   -51,   110,   127,
+     128,   326,    80,  -218,   389,   120,  -218,  -218,  -218,   131,
+    -218,  -218,   165,   175,  -218,  -218,    42,  -218,   172,   174,
+    -218,  -218,   178,  -218,  -218,   263,   176,   333,   326,   326,
+    -218,  -218,   391,   181,   190,  -218,   326,   326,   326,  -218,
+    -218,  -218,  -218,    83,    17,   182,  -218,  -218,   302,   196,
+     152,   326,   437,   326,    79,    31,   333,   389,   389,   389,
+     389,   389,   389,   389,   389,   123,  -218,   333,   326,   161,
+    -218,  -218,    11,     6,  -218,  -218,   213,  -218,  -218,   163,
+    -218,    80,  -218,  -218,   326,  -218,   333,     5,   302,   135,
+     156,  -218,  -218,   340,  -218,   173,  -218,   326,  -218,   326,
+     326,   326,   326,   326,   326,   326,   326,   481,   220,   207,
+    -218,   215,  -218,  -218,   183,  -218,   232,   214,  -218,   228,
+       5,     2,  -218,  -218,  -218,  -218,  -218,  -218,  -218,    80,
+     389,   389,   225,   230,   227,   237,   481,   326,   239,   240,
+     183,  -218,  -218,   302,   241,   173,   326,   189,  -218,   447,
+     447,   496,   245,    39,  -218,   302,   179,   179,  -218,  -218,
+    -218,    27,    32,   346,  -218,   249,   256,   198,   481,   246,
+     326,    60,   257,   326,  -218,  -218,   260,  -218,   244,  -218,
+    -218,   326,   290,   302,   291,   481,  -218,   326,   302,  -218,
+     280,  -218,   278,  -218,   299,   326,  -218,   481,   281,  -218,
+     198,  -218,   296,  -218,   125,   310,   139,  -218,  -218,   198,
+     268,   447,  -218,  -218,   276,   198,   311,   118,    52,  -218,
+     326,   326,   307,   322,  -218,  -218,   503,   271,  -218,  -218,
+     331,  -218,   326,   293,  -218,   320,   143,  -218,  -218,   319,
+     335,   447,   286,  -218,   326,  -218,   341,  -218,  -218,   447,
+     144,  -218,   447,   510,   336,  -218
   };
 
   const unsigned char
@@ -2167,221 +2188,224 @@ namespace yy {
        0,     0,     0,    32,     0,    82,    56,    54,    57,    58,
       55,     4,     0,     0,    69,    86,     0,    13,     0,     0,
       14,     6,    53,    87,    88,     0,     0,     0,     0,     0,
-      10,    11,     0,     0,     0,    78,     0,     0,     0,   110,
-     107,   108,   109,    82,   106,     0,   111,   112,    91,     0,
+      10,    11,     0,     0,     0,    78,     0,     0,     0,   113,
+     110,   111,   112,    82,   109,     0,   114,   115,    91,     0,
        0,     0,    38,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,    96,    75,     0,     0,     5,    47,    82,
-       0,    84,    81,    60,    64,    22,     0,    15,     0,    34,
-      35,     0,    21,     0,    36,    72,     0,     0,    59,    40,
-       0,   118,     0,    92,     0,    16,     0,     0,     0,     0,
-       0,     0,     0,     0,    49,     0,     0,    58,     0,    39,
-      28,     0,    27,     0,     0,    17,     0,    36,     0,   102,
-     101,   100,    99,     0,     0,     0,    76,     0,     0,     0,
-      49,     0,     0,     0,     0,    79,    89,    29,     0,    72,
-       0,     0,    31,     0,     0,     0,   108,     0,   119,   105,
-     114,   113,   115,   116,   117,    94,    95,    93,    77,     0,
-      50,     0,     0,     0,    90,    82,     0,     0,    33,   103,
-     104,    98,    97,    48,    83,     0,     0,    80,     0,     0,
-      85,     0,    73,    37,    70,     7,     0,    41,     0,     0,
-      42,     0,    82,    51,     0,    12,     0,    23,     0,     0,
-       0,    43,    46,     0,    73,     0,    66,    40,     0,     0,
-       0,    38,     0,    63,     0,     0,     0,     0,    74,    71,
-       0,     0,    52,    45,     0,     9,     0,     0,    24,     0,
-     116,    65,    44,     0,    40,     0,     0,     3,     0,    68,
-       0,     8,     3,    26,   116,     0,    25,    67
+       0,     0,     0,     0,     0,     0,    96,    75,     0,     0,
+       5,    47,    82,     0,    84,    81,    60,    64,    22,     0,
+      15,     0,    34,    35,     0,    21,     0,    36,    72,     0,
+       0,    59,    40,     0,   121,     0,    92,     0,    16,     0,
+       0,     0,     0,     0,     0,     0,     0,    49,     0,     0,
+      58,     0,    39,    28,     0,    27,     0,     0,    17,     0,
+      36,     0,   105,   101,   102,   103,   104,   100,    99,     0,
+       0,     0,    76,     0,     0,     0,    49,     0,     0,     0,
+       0,    79,    89,    29,     0,    72,     0,     0,    31,     0,
+       0,     0,   111,     0,   122,   108,   117,   116,   118,   119,
+     120,    94,    95,    93,    77,     0,    50,     0,     0,     0,
+      90,    82,     0,     0,    33,   106,   107,    98,    97,    48,
+      83,     0,     0,    80,     0,     0,    85,     0,    73,    37,
+      70,     7,     0,    41,     0,     0,    42,     0,    82,    51,
+       0,    12,     0,    23,     0,     0,     0,    43,    46,     0,
+      73,     0,    66,    40,     0,     0,     0,    38,     0,    63,
+       0,     0,     0,     0,    74,    71,     0,     0,    52,    45,
+       0,     9,     0,     0,    24,     0,   119,    65,    44,     0,
+       0,     0,     0,     3,     0,    68,     0,     8,     3,    26,
+     119,    40,    25,     0,     0,    67
   };
 
   const short
   fuzzy_parser::yypgoto_[] =
   {
-    -188,  -188,    -8,  -151,  -188,  -188,  -188,   -68,  -188,  -188,
-     229,   136,  -187,  -188,  -188,  -188,   220,  -188,   -69,   338,
-     296,   177,  -188,  -163,  -188,    52,  -188,  -188,   219,   -29,
-    -188,   278,    -2,   191,  -188,   -62,  -188,   -18,     0
+    -218,  -218,    -8,  -162,  -218,  -218,  -218,   -68,  -218,  -218,
+     221,   117,  -217,  -218,  -218,  -218,   206,  -218,   -59,   330,
+     292,   166,  -218,  -166,  -218,     3,  -218,  -218,   208,   -33,
+    -218,   265,    -2,   180,  -218,   -55,  -218,   -18,     0
   };
 
   const short
   fuzzy_parser::yydefgoto_[] =
   {
-      -1,     1,     2,    31,   232,   248,   128,    32,    47,    76,
-     162,   130,   165,    33,    34,    35,   179,   180,    36,    37,
-      38,   218,    39,    40,    41,   104,   147,    42,    91,    43,
-      93,    44,    64,    65,    66,    82,    46,    67,   105
+      -1,     1,     2,    31,   238,   254,   131,    32,    47,    76,
+     168,   133,   171,    33,    34,    35,   185,   186,    36,    37,
+      38,   224,    39,    40,    41,   107,   153,    42,    94,    43,
+      96,    44,    64,    65,    66,    85,    46,    67,   108
   };
 
   const short
   fuzzy_parser::yytable_[] =
   {
-      45,    52,   207,   131,   129,   152,    83,    92,    98,    48,
-       3,   160,   204,   205,    68,   138,   139,   140,   141,   142,
-      75,    74,   116,   117,   118,   119,   120,   116,   117,   118,
-     119,   120,    98,   116,   117,   118,   119,   120,    85,    69,
-     240,    99,   100,    84,    77,    70,    89,     4,   106,   107,
-      45,   114,    90,   135,   121,   181,   111,   112,   113,    83,
-      83,    83,    83,    83,    85,   121,   122,   260,   161,   153,
-     133,   126,   150,   134,   239,   101,   151,   207,    49,   245,
-      23,   181,   191,   192,    50,   148,    51,   123,    78,    79,
-      80,    81,   123,    85,    63,    71,    63,   207,   123,   246,
-     247,   157,    92,   159,   261,   116,   117,   118,   119,   120,
-     167,   163,    72,   214,   169,   189,   170,   171,   172,   173,
-     174,   175,   176,   177,    56,    92,    83,    83,   137,    57,
-     223,   151,   143,   144,   145,    56,   146,   121,   122,    53,
-     103,   190,   229,   116,   117,   118,   119,   120,    54,   164,
-      98,   197,   213,    58,    55,   158,   144,   145,    73,    63,
-     202,    45,    45,   129,    58,   116,   117,   118,   119,   120,
-     123,   168,    86,   136,    87,   121,   122,    59,    60,    61,
-      62,    63,     9,   233,    68,   230,   234,   219,    59,    60,
-      61,    62,    63,   236,   237,   219,   234,   121,   122,    94,
-     242,   224,   116,   117,   118,   119,   120,    96,   123,   228,
-     116,   117,   118,   119,   120,    95,   183,   102,   116,   117,
-     118,   119,   120,    45,   186,   -61,   110,   109,   -61,   133,
-     123,   118,   119,   120,   249,   250,   116,   117,   118,   119,
-     120,   149,   121,   122,   -62,   115,   256,   -62,   124,   263,
-     121,   122,   125,    45,   266,    97,    98,   154,   264,   182,
-     155,    45,   184,   194,    45,    99,   100,   187,   121,   122,
-     116,   117,   118,   119,   120,   123,   160,   185,   193,   209,
-     195,   198,   199,   123,   116,   117,   118,   119,   120,   201,
-     238,   116,   117,   118,   119,   120,   203,   241,   208,   101,
-     210,   123,   121,   122,   116,   117,   118,   119,   120,   116,
-     117,   118,   119,   120,   211,   212,   121,   122,   116,   117,
-     118,   235,   120,   121,   122,   116,   117,   118,   258,   120,
-     215,   217,    98,   144,   221,   123,   121,   122,   222,   225,
-     226,   121,   122,   262,    84,   227,   231,    85,   243,   123,
-     121,   122,   252,   251,   254,    56,   123,   121,   122,   255,
-      57,   -77,   257,   259,   267,    85,   188,   244,   132,   123,
-     196,    88,   220,   200,   123,   216,   156,     0,     0,     0,
-       0,     0,     0,   123,    58,     0,     0,     0,     0,     0,
-     123,     0,     0,     0,     0,     0,   -77,     0,     0,     0,
-       0,     0,   -77,     4,     0,     0,     0,     0,    59,    60,
-     166,    62,    63,     4,     5,    13,     6,     7,     8,     9,
-     108,    10,    11,    12,     0,    13,    14,    15,    16,     0,
-       0,    17,     0,     0,     0,     0,    23,    18,    19,    20,
-       0,     0,     0,    21,     0,    22,    23,     0,    24,     0,
-      25,    26,    27,    28,   127,    30,     0,     0,     0,     0,
-      25,    26,    27,    28,    29,    30,     4,     5,    13,     6,
-       7,     8,     9,     0,    10,    11,    12,     0,    13,    14,
-      15,    16,     0,     0,    17,     0,     0,     0,     0,     0,
-      18,    19,    20,     0,     0,     0,    21,     0,    22,    23,
-       0,    24,     0,   178,    26,    27,    28,   127,    30,     0,
-       0,     0,     0,    25,    26,    27,    28,    29,    30,   206,
-      10,    11,     0,     0,    13,     0,   253,    10,    11,     0,
-      17,    13,     0,   265,    10,    11,     0,    17,    13,     0,
-       0,     0,     0,     0,    17,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,   178,
-      26,    27,    28,    29,    30,     0,   178,    26,    27,    28,
-      29,    30,     0,   178,    26,    27,    28,    29,    30
+      45,    52,    48,    95,   132,   213,    86,   210,   211,   158,
+       3,   195,    69,   134,    68,    49,   246,   166,    70,   156,
+      75,    74,   141,   142,   143,   144,   145,   146,   147,   148,
+     119,   120,   121,   122,   123,   119,   120,   121,   122,   123,
+      88,   101,   119,   120,   121,   122,   123,    50,   109,   110,
+      45,   215,   150,   151,   273,   101,   114,   115,   116,    86,
+      86,    86,    86,    86,    86,    86,    86,   124,   187,   245,
+     136,   129,   251,   137,   124,   125,   159,   167,   139,   140,
+     213,   157,   119,   120,   121,   122,   123,   117,   154,    88,
+     152,    87,   252,   253,    51,   197,   198,   187,   126,   267,
+      53,    95,   138,   126,   163,    92,   165,   213,    54,   164,
+     126,    93,    88,   173,   124,   125,    55,   175,    71,   176,
+     177,   178,   179,   180,   181,   182,   183,    95,    87,   220,
+     157,     4,    86,    86,   239,    72,    73,   240,   119,   120,
+     121,   122,   123,    63,   169,   -77,   229,   196,   242,    88,
+     126,   240,   -61,   -62,   219,   -61,   -62,   203,   235,   119,
+     120,   121,   122,   123,    23,   170,   208,    45,    45,   132,
+     124,   125,   149,   150,   151,    89,   119,   120,   121,   122,
+     123,    63,   174,   -77,   121,   122,   123,   236,    90,   -77,
+      68,   124,   125,   225,     9,    97,   243,    98,   113,   105,
+     112,   225,   248,    99,   127,   118,   126,   230,   124,   125,
+     119,   120,   121,   122,   123,   234,   189,   119,   120,   121,
+     122,   123,   128,   192,   155,   160,   161,   126,   188,    45,
+     119,   120,   121,   122,   123,   136,   193,   166,   190,   199,
+     255,   256,   124,   125,   126,   201,   191,   204,   205,   124,
+     125,   209,   262,   207,   214,   269,   101,   200,   216,    45,
+     272,   218,   124,   125,   270,   102,   103,    45,   217,   221,
+      45,   119,   120,   121,   122,   123,   223,   244,   126,   119,
+     120,   121,   122,   123,   101,   126,   100,   101,   247,   119,
+     120,   121,   122,   123,   150,   231,   102,   103,   126,   227,
+     228,   232,   104,   124,   125,   119,   120,   121,   122,   123,
+      88,   124,   125,   119,   120,   121,   241,   123,   233,   237,
+     249,   124,   125,   119,   120,   121,   264,   123,   268,    56,
+     257,   258,   260,   104,    57,   263,    56,   124,   125,   126,
+     261,   106,   265,    56,   266,   124,   125,   126,    57,   119,
+     120,   121,   122,   123,   250,   124,   125,   126,    58,   275,
+     271,   194,   202,    91,   135,    58,   162,   226,   206,     0,
+     222,     0,    58,   126,     0,     0,     0,     0,     0,     0,
+       0,   126,     0,     0,     0,    59,    60,    61,    62,    63,
+       0,   126,    59,    60,    61,    62,    63,    77,     0,    59,
+      60,   172,    62,    63,     4,     5,     0,     6,     7,     8,
+       9,   111,    10,    11,    12,     0,    13,    14,    15,    16,
+       0,     0,    17,     0,     0,     0,     0,     0,    18,    19,
+      20,     0,     0,     0,    21,     0,    22,    23,     0,    24,
+       0,    78,    79,    80,    81,    82,    83,    84,     0,     0,
+       4,     0,    63,     0,    25,    26,    27,    28,    29,    30,
+       4,     5,    13,     6,     7,     8,     9,     0,    10,    11,
+      12,     0,    13,    14,    15,    16,     0,     0,    17,     0,
+       0,     0,     0,    23,    18,    19,    20,     0,     0,     0,
+      21,     0,    22,    23,     0,    24,     0,     0,     0,     0,
+      25,    26,    27,    28,   130,    30,    13,     0,     0,     0,
+      25,    26,    27,    28,    29,    30,   212,    10,    11,     0,
+       0,    13,     0,   259,    10,    11,     0,    17,    13,     0,
+     274,    10,    11,     0,    17,    13,     0,     0,     0,     0,
+       0,    17,     0,     0,   184,    26,    27,    28,   130,    30,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,   184,
+      26,    27,    28,    29,    30,     0,   184,    26,    27,    28,
+      29,    30,     0,   184,    26,    27,    28,    29,    30
   };
 
   const short
   fuzzy_parser::yycheck_[] =
   {
-       2,     9,   165,    72,    72,     3,    24,    36,    24,     8,
-       0,    12,   163,   164,    14,    77,    78,    79,    80,    81,
-      22,    21,     3,     4,     5,     6,     7,     3,     4,     5,
-       6,     7,    24,     3,     4,     5,     6,     7,    29,    60,
-     227,    33,    34,     8,     8,    66,    60,    13,    48,    49,
-      52,    67,    66,    23,    35,   124,    56,    57,    58,    77,
-      78,    79,    80,    81,    29,    35,    36,   254,    69,    67,
-      72,    71,     8,    73,   225,    67,    67,   240,     8,    20,
-      46,   150,   144,   145,    23,    85,    23,    68,    52,    53,
-      54,    55,    68,    29,    60,     8,    60,   260,    68,    40,
-      41,   101,   131,   103,   255,     3,     4,     5,     6,     7,
-     110,     9,     8,   182,   114,     9,   116,   117,   118,   119,
-     120,   121,   122,   123,     3,   154,   144,   145,    76,     8,
-     199,    67,    49,    50,    51,     3,    84,    35,    36,    60,
-       8,   143,   211,     3,     4,     5,     6,     7,    60,     9,
-      24,   151,   181,    32,    60,   103,    50,    51,     8,    60,
-     160,   163,   164,   231,    32,     3,     4,     5,     6,     7,
-      68,     9,    44,    47,    23,    35,    36,    56,    57,    58,
-      59,    60,    19,     9,   184,   214,    12,   187,    56,    57,
-      58,    59,    60,     9,   223,   195,    12,    35,    36,    23,
-     229,   201,     3,     4,     5,     6,     7,    25,    68,   209,
-       3,     4,     5,     6,     7,    23,     9,    23,     3,     4,
-       5,     6,     7,   225,     9,     9,     8,    19,    12,   231,
-      68,     5,     6,     7,   234,   235,     3,     4,     5,     6,
-       7,    60,    35,    36,     9,    23,   246,    12,     8,   257,
-      35,    36,    67,   255,   262,    23,    24,    12,   258,     8,
-      60,   263,    23,    30,   266,    33,    34,     8,    35,    36,
-       3,     4,     5,     6,     7,    68,    12,    60,     9,    12,
-       8,     8,     8,    68,     3,     4,     5,     6,     7,    12,
-       9,     3,     4,     5,     6,     7,    59,     9,     9,    67,
-       9,    68,    35,    36,     3,     4,     5,     6,     7,     3,
-       4,     5,     6,     7,    12,    60,    35,    36,     3,     4,
-       5,     6,     7,    35,    36,     3,     4,     5,     6,     7,
-      23,    19,    24,    50,     9,    68,    35,    36,     9,    15,
-      23,    35,    36,    42,     8,    19,    23,    29,     9,    68,
-      35,    36,     9,    23,    19,     3,    68,    35,    36,     9,
-       8,    25,    42,    23,    23,    29,   137,   231,    72,    68,
-     150,    33,   195,   154,    68,   184,    98,    -1,    -1,    -1,
-      -1,    -1,    -1,    68,    32,    -1,    -1,    -1,    -1,    -1,
-      68,    -1,    -1,    -1,    -1,    -1,    60,    -1,    -1,    -1,
-      -1,    -1,    66,    13,    -1,    -1,    -1,    -1,    56,    57,
-      58,    59,    60,    13,    14,    25,    16,    17,    18,    19,
-      20,    21,    22,    23,    -1,    25,    26,    27,    28,    -1,
-      -1,    31,    -1,    -1,    -1,    -1,    46,    37,    38,    39,
-      -1,    -1,    -1,    43,    -1,    45,    46,    -1,    48,    -1,
-      60,    61,    62,    63,    64,    65,    -1,    -1,    -1,    -1,
-      60,    61,    62,    63,    64,    65,    13,    14,    25,    16,
-      17,    18,    19,    -1,    21,    22,    23,    -1,    25,    26,
-      27,    28,    -1,    -1,    31,    -1,    -1,    -1,    -1,    -1,
-      37,    38,    39,    -1,    -1,    -1,    43,    -1,    45,    46,
-      -1,    48,    -1,    60,    61,    62,    63,    64,    65,    -1,
-      -1,    -1,    -1,    60,    61,    62,    63,    64,    65,    20,
-      21,    22,    -1,    -1,    25,    -1,    20,    21,    22,    -1,
-      31,    25,    -1,    20,    21,    22,    -1,    31,    25,    -1,
-      -1,    -1,    -1,    -1,    31,    -1,    -1,    -1,    -1,    -1,
-      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    60,
-      61,    62,    63,    64,    65,    -1,    60,    61,    62,    63,
-      64,    65,    -1,    60,    61,    62,    63,    64,    65
+       2,     9,     8,    36,    72,   171,    24,   169,   170,     3,
+       0,     9,    63,    72,    14,     8,   233,    12,    69,     8,
+      22,    21,    77,    78,    79,    80,    81,    82,    83,    84,
+       3,     4,     5,     6,     7,     3,     4,     5,     6,     7,
+      29,    24,     3,     4,     5,     6,     7,    23,    48,    49,
+      52,    12,    50,    51,   271,    24,    56,    57,    58,    77,
+      78,    79,    80,    81,    82,    83,    84,    35,   127,   231,
+      72,    71,    20,    73,    35,    36,    70,    72,    47,    76,
+     246,    70,     3,     4,     5,     6,     7,    70,    88,    29,
+      87,     8,    40,    41,    23,   150,   151,   156,    71,   261,
+      63,   134,    23,    71,   104,    63,   106,   273,    63,   106,
+      71,    69,    29,   113,    35,    36,    63,   117,     8,   119,
+     120,   121,   122,   123,   124,   125,   126,   160,     8,   188,
+      70,    13,   150,   151,     9,     8,     8,    12,     3,     4,
+       5,     6,     7,    63,     9,    25,   205,   149,     9,    29,
+      71,    12,     9,     9,   187,    12,    12,   157,   217,     3,
+       4,     5,     6,     7,    46,     9,   166,   169,   170,   237,
+      35,    36,    49,    50,    51,    44,     3,     4,     5,     6,
+       7,    63,     9,    63,     5,     6,     7,   220,    23,    69,
+     190,    35,    36,   193,    19,    23,   229,    23,     8,    23,
+      19,   201,   235,    25,     8,    23,    71,   207,    35,    36,
+       3,     4,     5,     6,     7,   215,     9,     3,     4,     5,
+       6,     7,    70,     9,    63,    12,    63,    71,     8,   231,
+       3,     4,     5,     6,     7,   237,     8,    12,    23,     9,
+     240,   241,    35,    36,    71,     8,    63,     8,     8,    35,
+      36,    62,   252,    12,     9,   263,    24,    30,     9,   261,
+     268,    63,    35,    36,   264,    33,    34,   269,    12,    23,
+     272,     3,     4,     5,     6,     7,    19,     9,    71,     3,
+       4,     5,     6,     7,    24,    71,    23,    24,    12,     3,
+       4,     5,     6,     7,    50,    15,    33,    34,    71,     9,
+       9,    23,    70,    35,    36,     3,     4,     5,     6,     7,
+      29,    35,    36,     3,     4,     5,     6,     7,    19,    23,
+       9,    35,    36,     3,     4,     5,     6,     7,    42,     3,
+      23,     9,    61,    70,     8,    42,     3,    35,    36,    71,
+       9,     8,    23,     3,     9,    35,    36,    71,     8,     3,
+       4,     5,     6,     7,   237,    35,    36,    71,    32,    23,
+      19,   140,   156,    33,    72,    32,   101,   201,   160,    -1,
+     190,    -1,    32,    71,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    71,    -1,    -1,    -1,    59,    60,    61,    62,    63,
+      -1,    71,    59,    60,    61,    62,    63,     8,    -1,    59,
+      60,    61,    62,    63,    13,    14,    -1,    16,    17,    18,
+      19,    20,    21,    22,    23,    -1,    25,    26,    27,    28,
+      -1,    -1,    31,    -1,    -1,    -1,    -1,    -1,    37,    38,
+      39,    -1,    -1,    -1,    43,    -1,    45,    46,    -1,    48,
+      -1,    52,    53,    54,    55,    56,    57,    58,    -1,    -1,
+      13,    -1,    63,    -1,    63,    64,    65,    66,    67,    68,
+      13,    14,    25,    16,    17,    18,    19,    -1,    21,    22,
+      23,    -1,    25,    26,    27,    28,    -1,    -1,    31,    -1,
+      -1,    -1,    -1,    46,    37,    38,    39,    -1,    -1,    -1,
+      43,    -1,    45,    46,    -1,    48,    -1,    -1,    -1,    -1,
+      63,    64,    65,    66,    67,    68,    25,    -1,    -1,    -1,
+      63,    64,    65,    66,    67,    68,    20,    21,    22,    -1,
+      -1,    25,    -1,    20,    21,    22,    -1,    31,    25,    -1,
+      20,    21,    22,    -1,    31,    25,    -1,    -1,    -1,    -1,
+      -1,    31,    -1,    -1,    63,    64,    65,    66,    67,    68,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    63,
+      64,    65,    66,    67,    68,    -1,    63,    64,    65,    66,
+      67,    68,    -1,    63,    64,    65,    66,    67,    68
   };
 
   const unsigned char
   fuzzy_parser::yystos_[] =
   {
-       0,    71,    72,     0,    13,    14,    16,    17,    18,    19,
+       0,    74,    75,     0,    13,    14,    16,    17,    18,    19,
       21,    22,    23,    25,    26,    27,    28,    31,    37,    38,
-      39,    43,    45,    46,    48,    60,    61,    62,    63,    64,
-      65,    73,    77,    83,    84,    85,    88,    89,    90,    92,
-      93,    94,    97,    99,   101,   102,   106,    78,     8,     8,
-      23,    23,    72,    60,    60,    60,     3,     8,    32,    56,
-      57,    58,    59,    60,   102,   103,   104,   107,   108,    60,
-      66,     8,     8,     8,   108,   102,    79,     8,    52,    53,
-      54,    55,   105,   107,     8,    29,    44,    23,    89,    60,
-      66,    98,    99,   100,    23,    23,    25,    23,    24,    33,
-      34,    67,    23,     8,    95,   108,   108,   108,    20,    19,
-       8,   108,   108,   108,    67,    23,     3,     4,     5,     6,
-       7,    35,    36,    68,     8,    67,   108,    64,    76,    77,
-      81,    88,    90,   102,   108,    23,    47,    95,   105,   105,
-     105,   105,   105,    49,    50,    51,    95,    96,   108,    60,
-       8,    67,     3,    67,    12,    60,   101,   108,    95,   108,
-      12,    69,    80,     9,     9,    82,    58,   108,     9,   108,
-     108,   108,   108,   108,   108,   108,   108,   108,    60,    86,
-      87,    88,     8,     9,    23,    60,     9,     8,    80,     9,
-     102,   105,   105,     9,    30,     8,    86,   108,     8,     8,
-      98,    12,   108,    59,    73,    73,    20,    93,     9,    12,
-       9,    12,    60,    99,    88,    23,   103,    19,    91,   108,
-      91,     9,     9,    88,   108,    15,    23,    19,   108,    88,
-      99,    23,    74,     9,    12,     6,     9,    99,     9,    73,
-      82,     9,    99,     9,    81,    20,    40,    41,    75,   108,
-     108,    23,     9,    20,    19,     9,   108,    42,     6,    23,
-      82,    73,    42,    72,   108,    20,    72,    23
+      39,    43,    45,    46,    48,    63,    64,    65,    66,    67,
+      68,    76,    80,    86,    87,    88,    91,    92,    93,    95,
+      96,    97,   100,   102,   104,   105,   109,    81,     8,     8,
+      23,    23,    75,    63,    63,    63,     3,     8,    32,    59,
+      60,    61,    62,    63,   105,   106,   107,   110,   111,    63,
+      69,     8,     8,     8,   111,   105,    82,     8,    52,    53,
+      54,    55,    56,    57,    58,   108,   110,     8,    29,    44,
+      23,    92,    63,    69,   101,   102,   103,    23,    23,    25,
+      23,    24,    33,    34,    70,    23,     8,    98,   111,   111,
+     111,    20,    19,     8,   111,   111,   111,    70,    23,     3,
+       4,     5,     6,     7,    35,    36,    71,     8,    70,   111,
+      67,    79,    80,    84,    91,    93,   105,   111,    23,    47,
+      98,   108,   108,   108,   108,   108,   108,   108,   108,    49,
+      50,    51,    98,    99,   111,    63,     8,    70,     3,    70,
+      12,    63,   104,   111,    98,   111,    12,    72,    83,     9,
+       9,    85,    61,   111,     9,   111,   111,   111,   111,   111,
+     111,   111,   111,   111,    63,    89,    90,    91,     8,     9,
+      23,    63,     9,     8,    83,     9,   105,   108,   108,     9,
+      30,     8,    89,   111,     8,     8,   101,    12,   111,    62,
+      76,    76,    20,    96,     9,    12,     9,    12,    63,   102,
+      91,    23,   106,    19,    94,   111,    94,     9,     9,    91,
+     111,    15,    23,    19,   111,    91,   102,    23,    77,     9,
+      12,     6,     9,   102,     9,    76,    85,    12,   102,     9,
+      84,    20,    40,    41,    78,   111,   111,    23,     9,    20,
+      61,     9,   111,    42,     6,    23,     9,    76,    42,    75,
+     111,    19,    75,    85,    20,    23
   };
 
   const unsigned char
   fuzzy_parser::yyr1_[] =
   {
-       0,    70,    71,    72,    72,    73,    73,    73,    73,    73,
-      73,    73,    73,    73,    73,    73,    73,    73,    73,    73,
-      73,    73,    73,    74,    74,    75,    75,    76,    76,    77,
-      78,    77,    79,    77,    77,    77,    80,    80,    81,    81,
-      82,    82,    83,    83,    83,    83,    83,    84,    85,    86,
-      86,    87,    87,    88,    88,    88,    88,    88,    88,    89,
-      90,    91,    91,    92,    93,    93,    93,    93,    93,    93,
-      94,    94,    95,    95,    95,    96,    96,    97,    97,    97,
-      98,    98,    99,    99,   100,   100,   101,   101,   102,   102,
-     103,   103,   104,   104,   104,   104,   105,   105,   105,   105,
-     105,   105,   105,   105,   106,   107,   107,   108,   108,   108,
-     108,   108,   108,   108,   108,   108,   108,   108,   108,   108
+       0,    73,    74,    75,    75,    76,    76,    76,    76,    76,
+      76,    76,    76,    76,    76,    76,    76,    76,    76,    76,
+      76,    76,    76,    77,    77,    78,    78,    79,    79,    80,
+      81,    80,    82,    80,    80,    80,    83,    83,    84,    84,
+      85,    85,    86,    86,    86,    86,    86,    87,    88,    89,
+      89,    90,    90,    91,    91,    91,    91,    91,    91,    92,
+      93,    94,    94,    95,    96,    96,    96,    96,    96,    96,
+      97,    97,    98,    98,    98,    99,    99,   100,   100,   100,
+     101,   101,   102,   102,   103,   103,   104,   104,   105,   105,
+     106,   106,   107,   107,   107,   107,   108,   108,   108,   108,
+     108,   108,   108,   108,   108,   108,   108,   109,   110,   110,
+     111,   111,   111,   111,   111,   111,   111,   111,   111,   111,
+     111,   111,   111
   };
 
   const unsigned char
@@ -2393,12 +2417,13 @@ namespace yy {
        0,     4,     0,     4,     2,     2,     0,     2,     0,     1,
        0,     2,     5,     5,     7,     7,     5,     2,     4,     0,
        1,     2,     4,     1,     1,     1,     1,     1,     1,     3,
-       2,     3,     5,     6,     2,     7,     6,    11,     9,     1,
+       2,     3,     5,     6,     2,     7,     6,    13,     9,     1,
        5,     7,     1,     3,     5,     0,     1,     1,     2,     3,
        3,     1,     1,     4,     1,     3,     1,     1,     1,     3,
        0,     1,     2,     3,     3,     3,     1,     3,     3,     2,
-       2,     2,     2,     3,     4,     3,     1,     1,     1,     1,
-       1,     1,     1,     3,     3,     3,     3,     3,     2,     3
+       2,     2,     2,     2,     2,     2,     3,     4,     3,     1,
+       1,     1,     1,     1,     1,     1,     3,     3,     3,     3,
+       3,     2,     3
   };
 
 
@@ -2417,11 +2442,12 @@ namespace yy {
   "\"++\"", "\"--\"", "\"&&\"", "\"||\"", "\"exit\"", "\"for\"",
   "\"switch\"", "\"case\"", "\"default\"", "\":\"", "\"system\"",
   "\"discrete\"", "\"put\"", "\"prints\"", "\":=\"", "\"rule\"", "\"=>\"",
-  "\"AND\"", "\"OR\"", "\"NOT\"", "\"VERY\"", "\"LITTLE\"", "\"REALLY\"",
-  "BOOLEN", "\"Number type\"", "\"int type\"", "STRING", "NAME",
-  "\"String\"", "\"Number\"", "\"bool\"", "\"fuzzy\"", "\"int\"",
-  "\"operator\"", "\"ASSIGN OPERATOR\"", "RELOP", "REDIRECT_OP", "$accept",
-  "unit", "statements", "statement", "case_statements", "case_statement",
+  "\"AND\"", "\"OR\"", "\"NOT\"", "\"VERY\"", "\"EXTREMELY\"",
+  "\"SEEMED\"", "\"BIT\"", "\"LITTLE\"", "\"REALLY\"", "BOOLEN",
+  "\"Number type\"", "\"int type\"", "STRING", "NAME", "\"String\"",
+  "\"Number\"", "\"bool\"", "\"fuzzy\"", "\"int\"", "\"operator\"",
+  "\"ASSIGN OPERATOR\"", "RELOP", "REDIRECT_OP", "$accept", "unit",
+  "statements", "statement", "case_statements", "case_statement",
   "for_init_stmt", "simple_stmt", "$@1", "$@2", "redirection",
   "opt_simple_stmt", "declares", "function_decl", "function_define",
   "function_call", "opt_param_list", "param_list", "datatype", "action",
@@ -2435,18 +2461,19 @@ namespace yy {
   const unsigned short
   fuzzy_parser::yyrline_[] =
   {
-       0,   180,   180,   186,   188,   198,   199,   200,   202,   214,
-     218,   220,   222,   224,   226,   228,   230,   234,   238,   240,
-     247,   253,   254,   258,   259,   273,   277,   284,   285,   289,
-     291,   290,   298,   297,   304,   309,   317,   318,   326,   327,
-     331,   332,   342,   350,   357,   365,   374,   384,   391,   402,
-     403,   407,   411,   419,   420,   424,   428,   432,   436,   443,
-     454,   461,   466,   475,   482,   486,   491,   495,   503,   511,
-     516,   520,   527,   528,   530,   535,   536,   540,   541,   546,
-     554,   555,   559,   560,   564,   565,   573,   574,   578,   579,
-     587,   589,   594,   597,   598,   602,   609,   610,   611,   612,
-     613,   614,   615,   616,   620,   627,   628,   632,   640,   641,
-     642,   643,   644,   645,   646,   647,   648,   649,   650,   651
+       0,   186,   186,   192,   194,   204,   205,   206,   208,   220,
+     224,   226,   228,   230,   232,   234,   236,   240,   244,   246,
+     253,   259,   260,   264,   265,   279,   283,   290,   291,   295,
+     297,   296,   304,   303,   310,   315,   323,   324,   332,   333,
+     337,   338,   348,   356,   363,   371,   380,   390,   397,   408,
+     409,   413,   417,   425,   426,   430,   434,   438,   442,   449,
+     460,   467,   472,   481,   488,   492,   497,   501,   511,   519,
+     524,   528,   535,   536,   538,   543,   544,   548,   549,   554,
+     562,   563,   567,   568,   572,   573,   581,   582,   586,   587,
+     595,   597,   602,   605,   606,   610,   617,   618,   619,   620,
+     621,   622,   623,   624,   625,   626,   627,   631,   638,   639,
+     643,   651,   652,   653,   654,   655,   656,   657,   658,   659,
+     660,   661,   662
   };
 
   // Print the state stack on the debug stream.
@@ -2518,9 +2545,9 @@ namespace yy {
       35,    36,    37,    38,    39,    40,    41,    42,    43,    44,
       45,    46,    47,    48,    49,    50,    51,    52,    53,    54,
       55,    56,    57,    58,    59,    60,    61,    62,    63,    64,
-      65,    66,    67,    68,    69
+      65,    66,    67,    68,    69,    70,    71,    72
     };
-    const unsigned user_token_number_max_ = 324;
+    const unsigned user_token_number_max_ = 327;
     const token_number_type undef_token_ = 2;
 
     if (static_cast<int> (t) <= yyeof_)
@@ -2533,8 +2560,8 @@ namespace yy {
 
 
 } // yy
-#line 2537 "fuzzy_parser.cc" // lalr1.cc:1218
-#line 656 "fuzzy_parser.yy" // lalr1.cc:1219
+#line 2564 "fuzzy_parser.cc" // lalr1.cc:1218
+#line 667 "fuzzy_parser.yy" // lalr1.cc:1219
 
 void
 yy::fuzzy_parser::error (const location_type& l,
