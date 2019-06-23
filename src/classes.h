@@ -24,7 +24,7 @@
 
 //# define _DEBUG
 
-# define VERSION "Fuzzy 1.5.1"
+# define VERSION "Fuzzy 2.0"
 # define error_prefix 		"Fuzzy: "
 # define BASETYPE_ID_LIMIT 	100
 # define CLASS_ID_FUZZY_PAIR 	BASETYPE_ID_LIMIT
