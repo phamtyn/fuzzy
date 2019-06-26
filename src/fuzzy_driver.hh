@@ -259,7 +259,26 @@ public:
   
   void set_reading(const string &arg);
   
+  void check_this_keyword_in_class(NODE *tree, STRUCT *parent);
+  
 };
+
+inline void fuzzy_driver::check_this_keyword_in_class(NODE *tree, STRUCT *parent) {
+    string msg = "The 'this' keyword must be inside a class object";
+    bool is_this_keyword_in_class = false;
+    STRUCT *temp = parent;
+    while (temp) {
+        if (temp->GetClassObject()) {
+            is_this_keyword_in_class = true;
+            break;
+        }
+        temp = temp->GetParent();
+    }
+    if (! is_this_keyword_in_class) {
+        error(tree->loc, msg.data());
+        exit(EXIT_FAILURE);
+    }
+}
 
 inline bool fuzzy_driver::CheckFuzzyObject_discrete(Object *pObject, 
 						     const yy::location &loc, const string &statement)

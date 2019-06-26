@@ -535,6 +535,23 @@ Object *fuzzy_driver::FindFunction(STRUCT *parentStruct, const string &name,
 	return NULL;
 }
 
+inline STRUCT *get_this(STRUCT *parent) {
+    
+    STRUCT *start = parent;
+    while (start->GetType() != Type_function)
+        start = start->GetParent();
+    return start->GetParent();
+    
+    /*
+    if (parent->GetClassObject())
+        return parent;
+    STRUCT *start = parent;
+    while (! start->GetType() & Type_function)
+        start = start->GetParent();
+    return get_this(start->GetParent());
+    */
+}
+
 Object *fuzzy_driver::do_namespace(NODE *tree, STRUCT *parentStruct)
 {
 	NODE *t;
@@ -546,6 +563,11 @@ Object *fuzzy_driver::do_namespace(NODE *tree, STRUCT *parentStruct)
 	string name;
 	
 	GetItemName(tree, name);
+    
+    if (name == "this") {
+        check_this_keyword_in_class(tree, parent);
+        return get_this(parent);
+    }
 	
 	if(tree->left->type == Node_function)
 	{

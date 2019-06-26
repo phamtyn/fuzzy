@@ -379,9 +379,10 @@ namespace yy {
         TOK_FUZZY_KEY = 322,
         TOK_INT_KEY = 323,
         TOK_OPERATOR = 324,
-        TOK_ASSIGNOP = 325,
-        TOK_RELOP = 326,
-        TOK_REDIRECT_OP = 327
+        TOK_THIS = 325,
+        TOK_ASSIGNOP = 326,
+        TOK_RELOP = 327,
+        TOK_REDIRECT_OP = 328
       };
     };
 
@@ -703,12 +704,12 @@ namespace yy {
     enum
     {
       yyeof_ = 0,
-      yylast_ = 578,     ///< Last index in yytable_.
+      yylast_ = 617,     ///< Last index in yytable_.
       yynnts_ = 39,  ///< Number of nonterminal symbols.
       yyfinal_ = 3, ///< Termination state number.
       yyterror_ = 1,
       yyerrcode_ = 256,
-      yyntokens_ = 73  ///< Number of tokens.
+      yyntokens_ = 74  ///< Number of tokens.
     };
 
 
@@ -719,7 +720,7 @@ namespace yy {
 
 
 } // yy
-#line 723 "fuzzy_parser.hh" // lalr1.cc:404
+#line 724 "fuzzy_parser.hh" // lalr1.cc:404
 
 
 

@@ -119,7 +119,7 @@
   VERY		"VERY"
   EXTREMELY	"EXTREMELY"
   SEEMED	"SEEMED"
-  BIT	"BIT"
+  BIT	    "BIT"
   LITTLE	"LITTLE"
   REALLY	"REALLY"
 ;
@@ -130,7 +130,7 @@
 %token 		<lval>  	INT "int type" 
 %token 		<sval>  	STRING  NAME  STRING_KEY "String"  NUMBER_KEY	"Number"
 %token 		<sval>  	BOOL_KEY "bool" FUZZY_KEY "fuzzy"  INT_KEY "int"
-%token 		<sval>  	OPERATOR "operator"	
+%token 		<sval>  	OPERATOR "operator" THIS "this"
 %token 		<Node_type>   	ASSIGNOP "ASSIGN OPERATOR"
 %token 		<Node_type>   	RELOP REDIRECT_OP
 
@@ -635,8 +635,13 @@ fuzzy_rule
 	;	
 	
 namespaces
-	: namespace ASSIGNOP exp	{ $$ = node ($1, $2, $3, @$);	}	
+	: namespace ASSIGNOP exp	{ $$ = node ($1, $2, $3, @$);	}
 	| namespace            		{ $$ = $1;			}
+	| THIS               		
+        { 
+            NODE *this_node = node ($1, @1); this_node->type = Node_name;
+            $$ = node (this_node, Node_namespace, NULL, @$);
+        }
 	;		
 	
 exp

@@ -24,7 +24,7 @@
 
 //# define _DEBUG
 
-# define VERSION "Fuzzy 2.0"
+# define VERSION "Fuzzy 2.0.1"
 # define error_prefix 		"Fuzzy: "
 # define BASETYPE_ID_LIMIT 	100
 # define CLASS_ID_FUZZY_PAIR 	BASETYPE_ID_LIMIT
@@ -505,7 +505,7 @@ public:
 	
 	STRUCT() : Object((NODE *)NULL), m_bComplete(false), m_parent(NULL), m_fuzzy(NULL), 
 					m_child(NULL), m_pFunctionValue(NULL), m_bFuzzy(0), m_fuzzy_size(MATRIX_SIZE) {
-						m_type = Type_struct;
+						m_type = Type_struct; m_ClassObject = NULL;
 					}
 	STRUCT(const string &_typename, STRUCT *parent, DATATYPE type = Type_struct | Type_classobject);
 	STRUCT(STRUCT *parent, DATATYPE type = Type_struct);
@@ -1100,6 +1100,7 @@ inline STRUCT::STRUCT(STRUCT *parent, DATATYPE type) :
 		m_parent(parent), m_child(NULL), Object(type), 
 		m_bComplete(false), m_pFunctionValue(NULL), m_fuzzy(NULL), m_bFuzzy(0), m_fuzzy_size(MATRIX_SIZE)
 {
+    m_ClassObject = NULL;
 }
 
 class NODE
